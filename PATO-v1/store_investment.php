@@ -1,4 +1,6 @@
 <?php
+// Retrieve the POST data
+$data = json_decode(file_get_contents('php://input'), true);
 
 include "dbconfig.php";
 // session_start();
@@ -13,8 +15,7 @@ include "dbconfig.php";
 
 $userID = $_SESSION['userID'];
 
-// Retrieve the POST data
-$data = json_decode(file_get_contents('php://input'), true);
+
 
 // Extract the required data
 $amount = $data['amount'];
