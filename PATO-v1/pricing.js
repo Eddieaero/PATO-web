@@ -189,35 +189,26 @@ const showProgress = () => {
 
 
 const SelectedInvestment = (selectedInvestAmount, userID) => {
-  const amount = selectedInvestAmount; 
+  const amount = selectedInvestAmount;
   var userID = window.userID;
-  // console.log(userID);
-  // Send the selected investment information to the database using AJAX or any server-side technology
-  // You'll need to implement the server-side code to handle the database insertion
 
-  // Example AJAX request using Fetch API
-  fetch('store_investment.php', {
-    method: 'POST',
-    // body: JSON.stringify({ amount:amount}),
-    body: JSON.stringify({ amount: amount, userID: userID }), // Pass the amount and userID to the request body
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  })
-  .then(function(response) {
-    // Handle the response from the server
-    if (response.ok) {
+  // Send the selected investment information to the database using AJAX
+  $.ajax({
+    url: 'store_investment.php',
+    type: 'POST',
+    data: JSON.stringify({ amount: amount, userID: userID }),
+    contentType: 'application/json',
+    success: function(response) {
       console.log('Investment stored successfully.');
       console.log(amount);
       console.log(userID);
-    } else {
-      console.error('Failed to store investment.');
+    },
+    error: function(xhr, status, error) {
+      console.error('Failed to store investment:', error);
     }
-  })
-  .catch(function(error) {
-    console.error('Error occurred during investment storage:', error);
   });
 }
+
 
 
 const cancelPayment = () => {
