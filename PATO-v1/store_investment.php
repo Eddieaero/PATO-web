@@ -1,21 +1,19 @@
 <?php
+session_start();
+
 // Retrieve the POST data
 $data = json_decode(file_get_contents('php://input'), true);
 
 include "dbconfig.php";
-// session_start();
 
-// if (!isset($_SESSION['id'])) {
-//     // User is not logged in, handle the error accordingly
-//     $response = array('status' => 'error', 'message' => 'User is not logged in');
-//     echo json_encode($response);
-//     exit;
-// }
-
+if (!isset($_SESSION['userID'])) {
+    // User is not logged in, handle the error accordingly
+    $response = array('status' => 'error', 'message' => 'User is not logged in');
+    echo json_encode($response);
+    exit;
+}
 
 $userID = $_SESSION['userID'];
-
-
 
 // Extract the required data
 $amount = $data['amount'];
@@ -24,16 +22,12 @@ $amount = $data['amount'];
 $checkUserQuery = "SELECT id FROM user WHERE id = '$userID'";
 $result = $conn->query($checkUserQuery);
 
-
-// Retrieve the amount from the request
-$amount = $_POST['amount'];
-
-
-// Retrieve the user_id from the current session
-//  echo $_SESSION['userID'] ;
-
-
-
+if ($result->num_rows == 0) {
+    // User ID does not exist in the user table, handle the error accordingly
+    $response = array('status' => 'error', 'message' => 'Invalid user ID');
+    echo json_encode($response);
+    exit;
+}
 
 // Determine the investment_plan_id based on the amount
 if ($amount == 25000) {
@@ -48,22 +42,19 @@ if ($amount == 25000) {
     $investmentPlanID = 5;
 } else {
     // Invalid amount, handle the error accordingly
-    echo "Invalid amount.";
+    $response = array('status' => 'error', 'message' => 'Invalid amount');
+    echo json_encode($response);
     exit;
 }
-// Check the connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-
-
 
 // Prepare the SQL statement to insert the investment
-$stmt = $conn->prepare("INSERT INTO investments (user_id, investment_plan_id, amount) VALUES (?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO investments (user_id, investment_plan_id, amount, created_at) VALUES (?, ?, ?, NOW())");
 
 if (!$stmt) {
-    die("Preparation of SQL statement failed: " . $conn->connect_error);
+    // Preparation of SQL statement failed, handle the error accordingly
+    $response = array('status' => 'error', 'message' => 'Failed to prepare SQL statement');
+    echo json_encode($response);
+    exit;
 }
 
 // Bind the parameters and execute the statement
@@ -73,15 +64,15 @@ $stmt->execute();
 // Check if the insertion was successful
 if ($stmt->affected_rows > 0) {
     // Investment stored successfully
-    echo "Investment stored successfully.";
+    $response = array('status' => 'success', 'message' => 'Investment stored successfully');
+    echo json_encode($response);
 } else {
     // Failed to store investment
-    echo "Failed to store investment.";
+    $response = array('status' => 'error', 'message' => 'Failed to store investment');
+    echo json_encode($response);
 }
 
-// Close the statement and database connection'
+// Close the statement and database connection
 $stmt->close();
 $conn->close();
 ?>
-
-
