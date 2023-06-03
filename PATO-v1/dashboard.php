@@ -154,15 +154,18 @@ include "dbconfig.php";
           <!-- Count item widget-->
           <div class="col-xl-7 col-md-7   col-sm-9"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);">
             <div class="row  " style="border-radius: 10%">
-                  <div class="col-4">
-                    <img src="images\profile.jpeg" class="img-fluid rounded-start"  alt="...">
+                  <div class="col-4" >
+                    <!-- <img src="images\profile.jpeg" class="img-fluid rounded-start" style="border-radius: 50px" alt="..."> -->
+                    <img src="images\profile.jpeg" class="p-2" style="border-radius: 20px">
                   </div>
                   <div class="col-8 sm-12 bg-light p-3">
                       <h5 class="card-title h1"> <?php echo $_SESSION['user_name'] ?></h5>
                       <p class="card-text h5"> Verified Pato Investor</p>
-                      <p class="card-text py-3"><small class="text-muted">
-                        Last logged <h5 class="card-title h1"> <?php echo $_SESSION['time_elapsed'] ?></h5>
- ago</small></p>
+                      <p class="card-text py-3">
+                        <small class="text-muted">
+                        Last logged 3mins ago
+                        </small>
+                      </p>
                       <div class="offset-lg-9 offset-md-9 offset-sm-9 ">
                         <button class=" btn btn-primary " style=" border-radius: 5px;"> Edit </button>
                       </div>

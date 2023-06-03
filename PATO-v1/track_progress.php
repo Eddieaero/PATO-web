@@ -150,12 +150,13 @@ include "dbconfig.php";
       <div class="container-fluid me-4">
         <div class="row me-4">
           <!-- Count item widget-->
-          <div class="col-xl-8 col-md-8  me-3 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);">
-            <div class="row " style="border-radius: 10%">
-                  <div class="col-2">
-                    <img src="images\profile.jpeg" class="img-fluid rounded-start"  alt="...">
+          <div class="col-xl-8 col-md-8  me-3 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);" style="border-radius: 25%">
+            <div class="row " >
+                  <div class="col-3 py-1" >
+                    <!-- <img src="images\profile.jpeg" class="img-fluid rounded-start"  alt="..."> -->
+                    <img src="images\profile.jpeg" class="p-2" style="border-radius: 20px">
                   </div>
-                  <div class="col-8 col-md-8 sm-12 bg-light px-1">
+                  <div class="col-8 col-md-8 sm-12 bg-light py-3 px-1" >
                       <h5 class="card-title h1"> <?php echo $_SESSION['user_name'] ?></h5>
                       <p class="card-text h5"> Verified Pato Investor</p>
                       <p class="card-text py-3"><small class="text-muted">Last logged 3 mins ago</small></p>
@@ -182,6 +183,7 @@ include "dbconfig.php";
 
           <!-- Line Chart -->
           <div class="col-lg-12 col-md-12 col-sm-12" id="header1">
+            
 
           </div>
           <div class="col-lg-12 col-md-12 col-sm-12" id="header2">
