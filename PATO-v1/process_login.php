@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     else{
         // Redirect to the login page
-        header('Location: login.php?error=1');
+        header('Location: signin.php?error=1');
     }
 
 
