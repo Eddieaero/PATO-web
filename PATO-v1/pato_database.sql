@@ -43,15 +43,15 @@ CREATE TABLE investment_plans (
 );
 
 INSERT INTO investment_plans (return_percentage, period_in_days, membership_fee, initial_investment)
-VALUES (0.03, 7, 3000, 25000.00);
+VALUES (0.04, 7, 3000, 25000.00);
 INSERT INTO investment_plans (return_percentage, period_in_days, membership_fee, initial_investment)
-VALUES (0.15, 30, 5000.00, 50000.00);
+VALUES (0.20, 30, 5000.00, 50000.00);
 INSERT INTO investment_plans (return_percentage, period_in_days, membership_fee, initial_investment)
-VALUES (0.5, 120, 7000.00, 70000.00);
+VALUES (0.70, 120, 7000.00, 70000.00);
 INSERT INTO investment_plans (return_percentage, period_in_days, membership_fee, initial_investment)
-VALUES (1.1, 180, 10000.00, 100000.00);
+VALUES (1.50, 180, 10000.00, 100000.00);
 INSERT INTO investment_plans (return_percentage, period_in_days, membership_fee, initial_investment)
-VALUES (2, 360, 15000.00, 300000.00);
+VALUES (3.00, 360, 15000.00, 300000.00);
 
 
 

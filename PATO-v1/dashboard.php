@@ -1,5 +1,6 @@
 <?php
 include "dbconfig.php";
+// session_start();
 ?>
 
 
@@ -159,7 +160,9 @@ include "dbconfig.php";
                   <div class="col-8 sm-12 bg-light p-3">
                       <h5 class="card-title h1"> <?php echo $_SESSION['user_name'] ?></h5>
                       <p class="card-text h5"> Verified Pato Investor</p>
-                      <p class="card-text py-3"><small class="text-muted">Last logged 3 mins ago</small></p>
+                      <p class="card-text py-3"><small class="text-muted">
+                        Last logged <h5 class="card-title h1"> <?php echo $_SESSION['time_elapsed'] ?></h5>
+ ago</small></p>
                       <div class="offset-lg-9 offset-md-9 offset-sm-9 ">
                         <button class=" btn btn-primary " style=" border-radius: 5px;"> Edit </button>
                       </div>

@@ -152,7 +152,7 @@ include "dbconfig.php";
           <!-- Count item widget-->
           <div class="col-xl-8 col-md-8  me-3 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);">
             <div class="row " style="border-radius: 10%">
-                  <div class="col-3">
+                  <div class="col-2">
                     <img src="images\profile.jpeg" class="img-fluid rounded-start"  alt="...">
                   </div>
                   <div class="col-8 col-md-8 sm-12 bg-light px-1">
