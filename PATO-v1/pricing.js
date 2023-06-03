@@ -7,6 +7,7 @@ const removePlanDetailButton = document.getElementById('back-plansModal');
 const investHeading1 = document.getElementById('header1');
 const investHeading2 = document.getElementById('header2');
 const investHeading3 = document.getElementById('header3');
+const investHeading4 = document.getElementById('header4');
 
 
 
@@ -102,6 +103,7 @@ const showInvestmentModal = () => {
     investHeading2.style.display = 'block';
     removeInvestmentsButton.style.display = 'block';
     confirmPayModal.style.display = 'none';
+    investHeading4.style.display = 'none';
 
 }
 
@@ -113,6 +115,8 @@ const removeInvestmentModal = () => {
     investHeading1.style.display = 'block';
     removeInvestmentsButton.style.display = 'none';
     confirmPayModal.style.display = 'none';
+    investHeading4.style.display = 'none';
+
 
 
 }
@@ -132,6 +136,8 @@ const showDetailModal = () => {
   removePlanDetailButton.style.display = 'block';
   detailWindowModal.style.display = 'inline-block';
   confirmPayModal.style.display = 'none';
+  investHeading4.style.display = 'none';
+
 
 };
 
@@ -162,6 +168,7 @@ const removePlanDetailModal = () => {
   // removeInvestmentsButton.classList.add(right-button);
 
   detailWindowModal.style.display = 'none';
+  investHeading4.style.display = 'none';
 
   investHeading3.style.display = 'none';
   investHeading2.style.display = 'block';
@@ -185,6 +192,10 @@ const validatePayment = () => {
 
 const showProgress = () => {
   window.location.href = 'track_progress.php';
+  validatePaymentModal.style.display = 'none';
+  confirmPayModal.style.display = 'none';
+  removePlanDetailButton.style.display = 'none';
+  investHeading4.style.display = 'inline-block';
 }
 
 

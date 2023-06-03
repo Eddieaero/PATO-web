@@ -218,6 +218,21 @@ include "dbconfig.php";
             </div>
             </div>
           </div>
+          <div class="col-lg-12 col-md-12 col-sm-12" id="header4">
+          <div class="card shadow-0 text-center col-lg-12 col-sm-12 d-flex container-fluid justify-content-center">
+            <div class="row">
+              <div class="col-lg-12">
+                <div class="card-body">
+                  <h5 class="card-title">Current Investment</h5>
+                  <p class="card-text">Type of Investment: [Type of Investment]</p>
+                  <p class="card-text">Amount Invested: [Amount Invested]</p>
+                  <a href="Track_progress.php" class="btn btn-primary">Track Progress</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
 
           <!-- pricing starts here -->
           <div id="detail-window" class="m-2 col-lg-11 card-body detailed  shadow  container-fluid container" >
