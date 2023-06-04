@@ -191,11 +191,13 @@ const validatePayment = () => {
 }
 
 const showProgress = () => {
-  window.location.href = 'track_progress.php';
+  // window.location.href = 'track_progress.php';
   validatePaymentModal.style.display = 'none';
   confirmPayModal.style.display = 'none';
   removePlanDetailButton.style.display = 'none';
   investHeading4.style.display = 'inline-block';
+  investHeading3.style.display = 'none';
+
 }
 
 

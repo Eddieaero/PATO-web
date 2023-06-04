@@ -55,7 +55,7 @@ include "dbconfig.php";
           <p class="h1 m-0">P</p>
         </a>
       </div>
-      <!-- Sidebar Navigation Menus--><span class="text-uppercase text-center text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Tabs</span>
+      <!-- Sidebar Navigation Menus<span class="text-uppercase text-center text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Tabs</span> -->
       <ul class="list-unstyled">
         <li class="sidebar-item"><a class="sidebar-link" href="dashboard.php">
             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
@@ -79,7 +79,7 @@ include "dbconfig.php";
   </nav>
   <div class="page">
     <!-- navbar-->
-    <header class="header  pb-3">
+    <header class="header  pb-2">
       <nav class="nav navbar fixed-top">
         <div class="container-fluid">
           <div class="d-flex align-items-center justify-content-between w-100">
@@ -148,17 +148,17 @@ include "dbconfig.php";
       </nav>
     </header>
     <!-- Counts Section -->
-    <section class="py-3">
+    <section class="py-3 ">
       <div class="container-fluid">
         <div class="row">
           <!-- Count item widget-->
-          <div class="col-xl-7 col-md-7   col-sm-9"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);">
-            <div class="row  " style="border-radius: 10%">
+          <div class="col-xl-7 col-md-7 bg-light  col-sm-9"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row  " >
                   <div class="col-4" >
                     <!-- <img src="images\profile.jpeg" class="img-fluid rounded-start" style="border-radius: 50px" alt="..."> -->
-                    <img src="images\profile.jpeg" class="p-2" style="border-radius: 20px">
+                    <img src="images\profile.jpeg" class="p-2" style="border-radius: 23px">
                   </div>
-                  <div class="col-8 sm-12 bg-light p-3">
+                  <div class="col-8 sm-12  p-3">
                       <h5 class="card-title h1"> <?php echo $_SESSION['user_name'] ?></h5>
                       <p class="card-text h5"> Verified Pato Investor</p>
                       <p class="card-text py-3">
@@ -223,10 +223,11 @@ include "dbconfig.php";
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-body">
-                  <h5 class="card-title">Current Investment</h5>
+                <h2 class=" float-start h1  col-lg-12 " id="invest-heading"> Investment details </h2>
+                  <h3 class="card-title">Current Investment</h5>
                   <p class="card-text">Type of Investment: [Type of Investment]</p>
                   <p class="card-text">Amount Invested: [Amount Invested]</p>
-                  <a href="Track_progress.php" class="btn btn-primary">Track Progress</a>
+                  <button class=" mt-2 btn btn-primary" id='' onclick=" window.location.href = 'track_progress.php';"  style=" border-radius: 5px;"> Show progress </button>
                 </div>
               </div>
             </div>
@@ -235,21 +236,21 @@ include "dbconfig.php";
 
 
           <!-- pricing starts here -->
-          <div id="detail-window" class="m-2 col-lg-11 card-body detailed  shadow  container-fluid container" >
-          <div class="p-1 col-lg-12 px-1 py-1 m-1 ">
+          <div id="detail-window" class="m-2 col-xl-11 col-lg-11 col-md-12 col-sm-10 card-body detailed  shadow  container-fluid container" >
+          <div class="p-1 col-xl-12 col-lg-12 px-1 py-1 m-1 ">
             <div class="m-1">
               <h1 id="net-heading">
                 Choose your mobile network
               </h1>
             </div>
             <div class="p-1 mobile-steps row">
-                <div class="p-1 float-start col-lg-4">
+                <div class="p-1 float-start col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <h2>Vodacom Network</h2>
                   <div>
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Enter *150*00# </p>
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Choose 4 (lipia bili)</p>
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Choose 1 (lipa kwa simu)</p>
-                     <p class="info-bx px-3 py-2 rounded bg-light my-1"> Choose 1 (airtel lipa namba )</p>
+                     <p class="info-bx px-3 py-2 rounded bg-light my-1"> Choose 1 (vodacom lipa namba )</p>
                      <!-- <p> 5.Enter amount</p> -->
                      <p class="pgx-2 info-bx px-3 py-2 rounded bg-light my-1"> </p>
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Enter lipa namba(5791797)</p>
@@ -258,7 +259,7 @@ include "dbconfig.php";
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Verify Payment </p>
                    </div>                 
                 </div>
-                <div class="p-1 col-lg-4">
+                <div class="p-1 col-xl-4 col-lg-4 col-md-4 col-sm-4">
                   <h2>Airtel Network</h2>
                   <div>
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Enter *150*60# </p>
@@ -273,7 +274,7 @@ include "dbconfig.php";
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Verify Payment </p>
                    </div>                
                 </div>
-                <div class="p-1 float-end col-lg-4">
+                <div class="p-1 float-end col-xl-4 col-lg-4 col-md-4 col-sm-4">
                 <h2>Tigo Network</h2>
                   <div>
                      <p class="info-bx px-3 py-2 rounded bg-light my-1"> Enter *150*01# </p>
