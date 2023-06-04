@@ -150,13 +150,13 @@ include "dbconfig.php";
       <div class="container-fluid col-12 " id="firstDAta">
         <div class="row ">
           <!-- Count item widget-->
-          <div class="col-xl-8 col-md-8  me-5 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" >
+          <div class="col-xl-8 col-md-8 bg-light me-5 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" >
             <div class="row me-4 " >
                   <div class="col-3 py-1" >
                     <!-- <img src="images\profile.jpeg" class="img-fluid rounded-start"  alt="..."> -->
                     <img src="images\track.jpg" class="p-2" style="border-radius: 20px">
                   </div>
-                  <div class="col-8 col-md-8 bg-light py-3 px-1" >
+                  <div class="col-8 col-md-8 py-3 px-1" >
                       <p class="card-text h2"> Track progress of your Investment </p>
                       <p class="card-text h4 mt-5"> Current Investment: </p>
                       <p class="card-text h4 "> Value: </p>
@@ -167,7 +167,7 @@ include "dbconfig.php";
                   </div>
             </div>
           </div>
-          <div class="col-xl-3 col-md-3 col-ms-3 align-items-center  col-sm-9"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+          <div class="col-xl-3 col-md-3 col-ms-3 align-items-center bg-light col-sm-9"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
             <div class="row align-items-center " >
                   <!-- <div class="col-12 sm-12 bg-light p-1">
 
@@ -176,11 +176,11 @@ include "dbconfig.php";
         </div>
       </div>
 
-      <div class="row col-12 mt-5 mb-5 me-4" id="secondDAta">
+      <div class="row col-12 mt-5 mb-5 bg-light me-4" id="secondDAta">
           <!-- Count item widget-->
           <div class="col-xl-12 col-md-8  me-3 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" >
             <div class="row px-3" >
-                  <div class="col-8 col-md-8 sm-12 bg-light py-3 px-1" >
+                  <div class="col-8 col-md-8 sm-12 py-3 px-1" >
                       <p class="card-text h2"> Track progress of your Investment </p>
                       <p class="card-text h4 mt-5"> Current Investment: </p>
                       <p class="card-text h4 "> Value: </p>
@@ -193,11 +193,12 @@ include "dbconfig.php";
           </div>
       </div>
       <!-- <div class="row col-12 mt-3 me-4 offset-1" id="thirdDAta"> -->
+
       <div class="row col-12  mt-5 mb-5" id="thirdDAta">
           <!-- Count item widget-->
-          <div class="col-xl-3 col-md-8 ms-3 me-3 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row px-3" >
-                   <div class="col-12 col-md-8 sm-12 bg-light py-3 px-1" >
+          <div class="col-xl-3 col-md-8 bg-light ms-3 me-3 col-sm-8"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row px-1" >
+                   <div class="col-12 col-md-8 sm-12  py-3" >
                       <p class="card-text h2"> Track progress of your Investment </p>
                       <p class="card-text h4 mt-5"> Current Investment: </p>
                       <p class="card-text h4 "> Value: </p>
@@ -209,9 +210,9 @@ include "dbconfig.php";
                   
             </div>
           </div>
-          <div class="col-xl-3 col-md-8  me-3 col-sm-8 offset-1"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row px-3" >
-                  <div class="col-12 col-md-8 sm-12 bg-light py-3 px-1" >
+          <div class="col-xl-3 col-md-8 bg-light me-2 col-sm-8 offset-1"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row px-1" >
+                  <div class="col-12 col-md-8 sm-12 py-3 " >
                       <p class="card-text h2"> Track progress of your Investment </p>
                       <p class="card-text h4 mt-5"> Current Investment: </p>
                       <p class="card-text h4 "> Value: </p>
@@ -222,9 +223,9 @@ include "dbconfig.php";
                   </div>
             </div>
           </div>
-          <div class="col-xl-3 col-md-8  me-3 col-sm-8 offset-1"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row px-3" >
-                  <div class="col-12 col-md-8 sm-12 bg-light py-3 px-1" >
+          <div class="col-xl-3 col-md-8 bg-light me-2 col-sm-8 offset-1"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row px-1" >
+                  <div class="col-12 col-md-8 sm-12 py-3 " >
                       <p class="card-text h2"> Track progress of your Investment </p>
                       <p class="card-text h4 mt-5"> Current Investment: </p>
                       <p class="card-text h4 "> Value: </p>
@@ -236,12 +237,11 @@ include "dbconfig.php";
             </div>
           </div>
       </div>
-      <div class="row col-12 mt-3 " id="thirdDAta">
+      <div class="row col-12 mt-3 " id="fourDAta">
           <!-- Count item widget-->
-
-          <div class="col-xl-5 col-md-8 ms-3 me-3 col-sm-8 "  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row px-3" >
-                  <div class="col-8 col-md-8 sm-12 bg-light py-3 px-1" >
+          <div class="col-xl-5 col-md-8 ms-3 bg-light me-3 col-sm-8 "  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row px-2" >
+                  <div class="col-8 col-md-8 sm-12 py-3 px-1" >
                       <p class="card-text h2"> Track progress of your Investment </p>
                       <p class="card-text h4 mt-5"> Current Investment: </p>
                       <p class="card-text h4 "> Value: </p>
@@ -252,9 +252,9 @@ include "dbconfig.php";
                   </div>
             </div>
           </div>
-          <div class="col-xl-5 col-md-8  me-3 col-sm-8 offset-1"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row px-3" >
-                  <div class="col-8 col-md-8 sm-12 bg-light py-3 px-1" >
+          <div class="col-xl-5 col-md-8  me-3 bg-light col-sm-8 offset-1"  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row px-2" >
+                  <div class="col-8 col-md-8 sm-12  py-3 px-1" >
                       <p class="card-text h2"> Track progress of your Investment </p>
                       <p class="card-text h4 mt-5"> Current Investment: </p>
                       <p class="card-text h4 "> Value: </p>
