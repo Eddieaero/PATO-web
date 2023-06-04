@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "edson000";  // enter your database password (i am using the default password for the root user)
+$password = "localhost";  // enter your database password (i am using the default password for the root user)
 $dbname = "patodb";
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
