@@ -2,10 +2,6 @@
 include "dbconfig.php";
 ?>
 
-<!-- <?php
-
-      ?> -->
-
 
 
 <!DOCTYPE html>
@@ -195,6 +191,7 @@ include "dbconfig.php";
                 <p class="card-text h2"> Track progress of your Investment </p>
                 <p class="card-text mt-5"> Current Investments: <?php echo $investments; ?></p>
                 <p class="card-text"> Value: <?php echo $total_investment; ?></p>
+                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
               </div>
             </div>
           </div>

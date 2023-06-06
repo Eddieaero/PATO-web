@@ -55,15 +55,30 @@ VALUES (3.00, 360, 15000.00, 300000.00);
 
 
 
+-- CREATE TABLE investments (
+--   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+--   user_id INT NOT NULL,
+--   investment_plan_id INT NOT NULL,
+--   amount DECIMAL(10,2) NOT NULL,
+--   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+--   FOREIGN KEY (user_id) REFERENCES users(id),
+--   FOREIGN KEY (investment_plan_id) REFERENCES investment_plans(id)
+-- );
+
 CREATE TABLE investments (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   user_id INT NOT NULL,
   investment_plan_id INT NOT NULL,
   amount DECIMAL(10,2) NOT NULL,
   created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  days_remaining INT NOT NULL DEFAULT 0,
+  progress_amount DECIMAL(10,2) NOT NULL DEFAULT 0.00,
+  percentage_progress DECIMAL(5,2) NOT NULL DEFAULT 0.00,
+  end_date DATE NOT NULL DEFAULT '0000-00-00',
   FOREIGN KEY (user_id) REFERENCES users(id),
   FOREIGN KEY (investment_plan_id) REFERENCES investment_plans(id)
 );
+
 
 INSERT INTO investments (user_id, investment_plan_id, amount)
 VALUES (1, 1, 1000.00);

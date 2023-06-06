@@ -265,14 +265,17 @@ include "dbconfig.php";
                                  <p class="mb-3">3. As per every profit withdrawal, the investor will pay 2% of withdrawn cash as tax, while the total withdrawal of all funds will result in a 5% tax cut.</p>
                               </li>
                               <li>
-                                 <p>4. If an investor wishes to withdraw funds invested before the locked period is over, he/she has to inform the company secretary at least one week before.</p>
+                                 <p class="mb-3">4. If an investor wishes to withdraw funds invested before the locked period is over, he/she has to inform the company secretary at least one week before.</p>
+                              </li>
+                              <li>
+                                 <p>5. All transactions will be done via mobile money or bank transfers, there won't be any cash transactions</p>
                               </li>
                               
 
                            </div>
 
                            <li>
-                                    <p class="mt-5 ">please read carefully, then accept the agreement.</p>
+                                    <p class="mt-3 ">please read carefully, then accept the agreement.</p>
                            </li>
 
                            <div class="modal-close btn" onclick="closeModal()">&#10004; Accept </div>

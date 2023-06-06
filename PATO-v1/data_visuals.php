@@ -12,21 +12,6 @@ if (!isset($_SESSION['userID'])) {
 
 $userID = $_SESSION['userID'];
 
-// Fetch investment plan data from the database
-$query = "SELECT * FROM investment_plans";
-$result = $conn->query($query);
-
-// Check if the query was successful
-if ($result) {
-    // Fetch the data and store it in an array
-    $investmentPlans = $result->fetch_all(MYSQLI_ASSOC);
-} else {
-    // Handle the error if the query fails
-    $response = array('status' => 'error', 'message' => 'Failed to retrieve investment plans');
-    echo json_encode($response);
-    exit;
-}
-
 // Retrieve user's investment data
 $query = "SELECT * FROM investments WHERE user_id = '$userID'";
 $result = $conn->query($query);
@@ -42,54 +27,68 @@ if ($result) {
     exit;
 }
 
-// Create visuals for each investment plan
-foreach ($investmentPlans as $plan) {
-    $planID = $plan['id'];
-    $returnPercentage = $plan['return_percentage'];
-    $periodInDays = $plan['period_in_days'];
-    $membershipFee = $plan['membership_fee'];
-    $initialInvestment = $plan['initial_investment'];
+// Retrieve investment plans data
+$investmentPlans = array();
+$investmentPlansQuery = "SELECT * FROM investment_plans";
+$investmentPlansResult = $conn->query($investmentPlansQuery);
+if ($investmentPlansResult) {
+    // Fetch the data and store it in an array
+    $investmentPlansData = $investmentPlansResult->fetch_all(MYSQLI_ASSOC);
+    foreach ($investmentPlansData as $plan) {
+        $investmentPlans[$plan['id']] = $plan;
+    }
+} else {
+    // Handle the error if the query fails
+    $response = array('status' => 'error', 'message' => 'Failed to retrieve investment plans');
+    echo json_encode($response);
+    exit;
+}
 
-    // Retrieve the user's investment data for the current plan
-    $investmentData = array_filter($investments, function ($investment) use ($planID) {
-        return $investment['investment_plan_id'] == $planID;
-    });
+// Update the investment data
+foreach ($investments as $investment) {
+    $investmentID = $investment['id'];
+    $investmentAmount = $investment['amount'];
+    $investmentDate = $investment['created_at'];
+    $investmentPlanID = $investment['investment_plan_id'];
+    $returnPercentage = $investmentPlans[$investmentPlanID]['return_percentage'];
+    $periodInDays = $investmentPlans[$investmentPlanID]['period_in_days'];
 
     // Calculate investment progress and additional metrics
-    $investmentProgress = array();
-    foreach ($investmentData as $investment) {
-        $investmentID = $investment['id'];
-        $investmentAmount = $investment['amount'];
-        $investmentDate = $investment['created_at'];
+    // $progress = round($investmentAmount * pow(1 + $returnPercentage, (time() - strtotime($investmentDate)) / (60 * 60 * 24 * $periodInDays)), 2);
+    $currentTime = time();
+    $currentDate = strtotime(date('Y-m-d'));
+    $investmentTime = strtotime($investmentDate);
+    $timeDifference = $currentTime - $investmentTime;
+    $expectedAmount = $investmentAmount * (1 + $returnPercentage);
+    $completionDate = date('Y-m-d', strtotime($investmentDate . ' + ' . $periodInDays . ' days'));
+    $completionDateTimestamp = strtotime($completionDate);
+    $daysRemaining = max(0, ($completionDateTimestamp - $currentDate) / (60 * 60 * 24));
+    // $percentageProgress = round(($progress / $expectedAmount) * 100, 0);
+    // $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 2);
+    $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 2);
+    $progress = $percentageProgress * $expectedAmount/100;
+    // Update the investment record in the database
+    $updateQuery = "UPDATE investments SET days_remaining = '$daysRemaining', progress_amount = '$progress', perc_progress = '$percentageProgress', end_date = '$completionDate' WHERE id = '$investmentID' AND user_id = '$userID'";
+    $updateResult = $conn->query($updateQuery);
 
-        $progress = $initialInvestment * pow(1 + $returnPercentage, (time() - strtotime($investmentDate)) / (60 * 60 * 24 * $periodInDays));
-        $expectedAmount = $initialInvestment * (1 + $returnPercentage);
-        $completionDate = date('Y-m-d', strtotime($investmentDate . ' + ' . $periodInDays . ' days'));
-
-        // Add the investment progress and additional metrics to the array
-        $investmentProgress[$investmentID] = array(
-            'progress' => $progress,
-            'expectedAmount' => $expectedAmount,
-            'completionDate' => $completionDate
-        );
+    if (!$updateResult) {
+        // Handle the error if the update fails
+        $response = array('status' => 'error', 'message' => 'Failed to update investment: ' . $conn->error);
+        echo json_encode($response);
+        exit;
     }
-
-    // Generate visuals for the current investment plan
-    echo "<div>";
-    echo "<h3>Investment Plan: $planID</h3>";
-    foreach ($investmentProgress as $investmentID => $progressData) {
-        $progress = $progressData['progress'];
-        $expectedAmount = $progressData['expectedAmount'];
-        $completionDate = $progressData['completionDate'];
-
+    else{
+        $response = array('status' => 'success', 'message' => ' update investment successfully: ' );
+        echo json_encode($response);
         echo "<p>Investment ID: $investmentID</p>";
         echo "<p>Progress: $progress</p>";
         echo "<p>Expected Amount: $expectedAmount</p>";
-        echo "<p>Completion Date: $completionDate</p>";
-        // Add visualization code here (e.g., charts, graphs, progress bars)
-        echo "<br>";
+        echo "<p>Percentage of Progress: $percentageProgress%</p>";
+        echo "<p>Days Remaining: $daysRemaining</p>";
+        echo "<p>Cash out Day : $completionDate</p>";
+        echo "<p>invested : $investmentAmount</p>";
+        // exit;
     }
-    echo "</div>";
 }
 
 // Close the database connection
