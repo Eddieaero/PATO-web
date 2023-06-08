@@ -56,16 +56,20 @@ foreach ($investments as $investment) {
     // Calculate investment progress and additional metrics
     // $progress = round($investmentAmount * pow(1 + $returnPercentage, (time() - strtotime($investmentDate)) / (60 * 60 * 24 * $periodInDays)), 2);
     $currentTime = time();
+    $currentDay = date('Y-m-d H:i:s');
     $currentDate = strtotime(date('Y-m-d'));
-    $investmentTime = strtotime($investmentDate);
-    $timeDifference = $currentTime - $investmentTime;
+
+    // $timeDifference = ($currentTime - $investmentTime);
     $expectedAmount = $investmentAmount * (1 + $returnPercentage);
     $completionDate = date('Y-m-d', strtotime($investmentDate . ' + ' . $periodInDays . ' days'));
     $completionDateTimestamp = strtotime($completionDate);
-    $daysRemaining = max(0, ($completionDateTimestamp - $currentDate) / (60 * 60 * 24));
-    // $percentageProgress = round(($progress / $expectedAmount) * 100, 0);
-    // $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 2);
-    $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 2);
+    $daysRemaining = round(max(0, ($completionDateTimestamp - $currentDate) / (60 * 60 * 24)),0);
+
+    $daysDifference = $periodInDays - $daysRemaining;
+    // $percentageProgress = ($daysDifference / ($periodInDays*60*60*24)) * 100;
+    $percentageProgress = ($daysDifference / ($periodInDays)) * 100;
+    // $percentageProgress = round(($daysDifference / ($periodInDays)) * 100,2);
+    // $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 4);
     $progress = $percentageProgress * $expectedAmount/100;
     // Update the investment record in the database
     $updateQuery = "UPDATE investments SET days_remaining = '$daysRemaining', progress_amount = '$progress', perc_progress = '$percentageProgress', end_date = '$completionDate' WHERE id = '$investmentID' AND user_id = '$userID'";
@@ -80,17 +84,23 @@ foreach ($investments as $investment) {
     else{
         $response = array('status' => 'success', 'message' => ' update investment successfully: ' );
         echo json_encode($response);
-        echo "<p>Investment ID: $investmentID</p>";
-        echo "<p>Progress: $progress</p>";
-        echo "<p>Expected Amount: $expectedAmount</p>";
-        echo "<p>Percentage of Progress: $percentageProgress%</p>";
-        echo "<p>Days Remaining: $daysRemaining</p>";
-        echo "<p>Cash out Day : $completionDate</p>";
-        echo "<p>invested : $investmentAmount</p>";
-        // exit;
+        // echo "<p>Investment ID: $investmentID</p>";
+        // echo "<p>Progress: $progress</p>";
+        // echo "<p>Expected Amount: $expectedAmount</p>";
+        // echo "<p>Percentage of Progress: $percentageProgress%</p>";
+        // echo "<p>Days Remaining: $daysRemaining</p>";
+        // echo "<p>Cash out Day : $completionDate</p>";
+        // echo "<p>invested : $investmentAmount</p>";
+        // echo "<p>investment date : $investmentDate</p>";
+        // echo "<p>current day  : $currentDay</p>";
+        //  // exit;
     }
 }
+
+
 
 // Close the database connection
 $conn->close();
 ?>
+
+<meta http-equiv="refresh" content="30">

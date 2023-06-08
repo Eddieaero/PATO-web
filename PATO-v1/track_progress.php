@@ -1,6 +1,119 @@
 <?php
 include "dbconfig.php";
+
+
+
+
+
+// include "dbconfig.php";
+
+// if (!isset($_SESSION['userID'])) {
+//     // User is not logged in, handle the error accordingly
+//     $response = array('status' => 'error', 'message' => 'User is not logged in');
+//     echo json_encode($response);
+//     exit;
+// }
+
+// $userID = $_SESSION['userID'];
+
+// // Retrieve user's investment data
+// $query = "SELECT * FROM investments WHERE user_id = '$userID'";
+// $result = $conn->query($query);
+
+// // Check if the query was successful
+// if ($result) {
+//     // Fetch the data and store it in an array
+//     $investments = $result->fetch_all(MYSQLI_ASSOC);
+// } else {
+//     // Handle the error if the query fails
+//     $response = array('status' => 'error', 'message' => 'Failed to retrieve user investments');
+//     echo json_encode($response);
+//     exit;
+// }
+
+// // Retrieve investment plans data
+// $investmentPlans = array();
+// $investmentPlansQuery = "SELECT * FROM investment_plans";
+// $investmentPlansResult = $conn->query($investmentPlansQuery);
+// if ($investmentPlansResult) {
+//     // Fetch the data and store it in an array
+//     $investmentPlansData = $investmentPlansResult->fetch_all(MYSQLI_ASSOC);
+//     foreach ($investmentPlansData as $plan) {
+//         $investmentPlans[$plan['id']] = $plan;
+//     }
+// } else {
+//     // Handle the error if the query fails
+//     $response = array('status' => 'error', 'message' => 'Failed to retrieve investment plans');
+//     echo json_encode($response);
+//     exit;
+// }
+
+// // Update the investment data
+// foreach ($investments as $investment) {
+//     $investmentID = $investment['id'];
+//     $investmentAmount = $investment['amount'];
+//     $investmentDate = $investment['created_at'];
+//     $investmentPlanID = $investment['investment_plan_id'];
+//     $returnPercentage = $investmentPlans[$investmentPlanID]['return_percentage'];
+//     $periodInDays = $investmentPlans[$investmentPlanID]['period_in_days'];
+
+//     // Calculate investment progress and additional metrics
+//     // $progress = round($investmentAmount * pow(1 + $returnPercentage, (time() - strtotime($investmentDate)) / (60 * 60 * 24 * $periodInDays)), 2);
+//     $currentTime = time();
+//     $currentDate = strtotime(date('Y-m-d'));
+//     $investmentTime = strtotime($investmentDate);
+//     $timeDifference = ($currentTime - $investmentTime);
+//     $expectedAmount = $investmentAmount * (1 + $returnPercentage);
+//     $completionDate = date('Y-m-d', strtotime($investmentDate . ' + ' . $periodInDays . ' days'));
+//     $completionDateTimestamp = strtotime($completionDate);
+//     $daysRemaining = max(0, ($completionDateTimestamp - $currentDate) / (60 * 60 * 24));
+//     // $percentageProgress = round(($progress / $expectedAmount) * 100, 0);
+//     // $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 2);
+//     $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 4);
+//     $progress = $percentageProgress * $expectedAmount/100;
+//     // Update the investment record in the database
+//     $updateQuery = "UPDATE investments SET days_remaining = '$daysRemaining', progress_amount = '$progress', perc_progress = '$percentageProgress', end_date = '$completionDate' WHERE id = '$investmentID' AND user_id = '$userID'";
+//     $updateResult = $conn->query($updateQuery);
+
+//     if (!$updateResult) {
+//         // Handle the error if the update fails
+//         $response = array('status' => 'error', 'message' => 'Failed to update investment: ' . $conn->error);
+//         echo json_encode($response);
+//         exit;
+//     }
+//     else{
+//         $response = array('status' => 'success', 'message' => ' update investment successfully: ' );
+//         // echo json_encode($response);
+//         // echo "<p>Investment ID: $investmentID</p>";
+//         // echo "<p>Progress: $progress</p>";
+//         // echo "<p>Expected Amount: $expectedAmount</p>";
+//         // echo "<p>Percentage of Progress: $percentageProgress%</p>";
+//         // echo "<p>Days Remaining: $daysRemaining</p>";
+//         // echo "<p>Cash out Day : $completionDate</p>";
+//         // echo "<p>invested : $investmentAmount</p>";
+//         // exit;
+//     }
+// }
+
 ?>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -25,6 +138,7 @@ include "dbconfig.php";
   <!-- Custom stylesheet - for your changes-->
   <link rel="stylesheet" href="css/custom.css">
 
+
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
   <!-- style css -->
   <link rel="stylesheet" href="css/style.css">
@@ -32,6 +146,22 @@ include "dbconfig.php";
   <link rel="stylesheet" href="css/responsive.css">
   <!-- Favicon-->
   <link rel="shortcut icon" href="img/favicon.ico">
+
+
+  <script>
+    var brandPrimary = "#33b35a";
+
+    function generateRandomColor() {
+      var r = Math.floor(Math.random() * 256);
+      var g = Math.floor(Math.random() * 256);
+      var b = Math.floor(Math.random() * 256);
+      var a = Math.random().toFixed(1);
+      return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
+    }
+  </script>
+
+
+
 </head>
 
 <body>
@@ -163,14 +293,75 @@ include "dbconfig.php";
       echo "<script> alert('User not found\nplease login again'); </script>";
     }
 
-    // number of investments made
-    $sql = "SELECT amount, DATE(created_at) as date, TIME(created_at) as time FROM investments WHERE user_id = '$id'";
-    $user_investments = $conn->query($sql);
-    $investments = $user_investments->num_rows;
 
-    $total_investment_sql = "SELECT SUM(amount) AS total FROM investments WHERE user_id = '$id'";
-    $result = $conn->query($total_investment_sql);
-    $total_investment = $result->fetch_assoc()['total'];
+    // investment details for a defined user in the system
+
+    $userID = $_SESSION['userID'];
+
+          // Retrieve user's investment data
+          $query = "SELECT investments.id, investments.investment_plan_id, investment_plans.return_percentage, investment_plans.period_in_days, investments.amount, investments.created_at, investments.days_remaining, investments.progress_amount, investments.perc_progress, investments.end_date 
+                FROM investments
+                INNER JOIN investment_plans ON investments.investment_plan_id = investment_plans.id
+                WHERE investments.user_id = '$userID'";
+          $result = $conn->query($query);
+
+          // Check if the query was successful
+          if ($result && $result->num_rows > 0) {
+          // Fetch the data and store it in an array
+          $investmentData = $result->fetch_assoc();
+
+          // Calculate investment category based on investment plan ID
+          // $investmentCategory = "";
+
+          if ($investmentData['investment_plan_id'] = 1) {
+              $investmentCategory = "Weekly";
+          } elseif ($investmentData['investment_plans_id'] = 2) {
+              $investmentCategory = "Monthly";
+          } elseif ($investmentData['investment_plans_id'] = 3) {
+              $investmentCategory = "Quarterly";
+          } elseif ($investmentData['investment_plans_id'] = 4) {
+              $investmentCategory = "Semi-Annually";
+          } elseif ($investmentData['investment_plans_id'] = 5) {
+              $investmentCategory = "Annually";
+          } else {
+              $investmentCategory = "Unknown";
+          }
+          
+
+          // Calculate expected value at the end of the investment
+          $expectedAmount = $investmentData['amount'] * (1 + $investmentData['return_percentage']);
+
+          // Format the end date as "Day, Month Year"
+          $completionDate = date('l, F j, Y', strtotime($investmentData['end_date']));
+
+          // Display the investment details
+
+          } else {
+          // Handle the case when there are no investments for the user
+          echo "<p>No investments found.</p>";
+          }
+
+          echo "<p>Investment Category: $investmentCategory</p>";
+          echo "<p>Initial Investment: ".$investmentData['amount']."</p>";
+          echo "<p>Percentage Progress: ".$investmentData['perc_progress']."%</p>";
+          echo "<p>Progress Value: ".$investmentData['progress_amount']."</p>";
+          echo "<p>Days Remaining: ".$investmentData['days_remaining']."</p>";
+          echo "<p>Expected Value at the End: ".$expectedAmount."</p>";
+          echo "<p>Investment Completion Date: ".$completionDate."</p>";
+
+
+
+
+
+
+    // number of investments made
+    // $sql = "SELECT amount, DATE(created_at) as date, TIME(created_at) as time FROM investments WHERE user_id = '$id'";
+    // $user_investments = $conn->query($sql);
+    // $investments = $user_investments->num_rows;
+
+    // $total_investment_sql = "SELECT SUM(amount) AS total FROM investments WHERE user_id = '$id'";
+    // $result = $conn->query($total_investment_sql);
+    // $total_investment = $result->fetch_assoc()['total'];
 
     ?>
 
@@ -178,7 +369,7 @@ include "dbconfig.php";
 
 
     <section class="py-3">
-      <div class="container-fluid col-12 " id="firstDAta">
+      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="firstDAta">
         <div class="row ">
           <!-- Count item widget-->
           <div class="col-xl-8 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
@@ -189,174 +380,93 @@ include "dbconfig.php";
               </div>
               <div class="col-8 col-md-8 py-3 px-1">
                 <p class="card-text h2"> Track progress of your Investment </p>
-                <p class="card-text mt-5"> Current Investments: <?php echo $investments; ?></p>
-                <p class="card-text"> Value: <?php echo $total_investment; ?></p>
+                <p class="card-text mt-5"> Current Investments: <?php echo $investmentCategory ?></p>
+                <p class="card-text"> Value: <?php echo $investmentData['amount'] ?></p>
                 <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-md-3 col-ms-3 align-items-center bg-light col-sm-9" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row align-items-center ">
-
+          <div class="col-xl-3 col-md-3 col-ms-3  col-sm-9" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class=" chart-container">
+              <div>
+                <!-- <canvas class="my-chart"></canvas> -->
+              </div>
             </div>
           </div>
         </div>
+      </div>
 
-
-        <div class="row mt-4" id="">
+      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="SecondDAta">
+        <div class="row ">
           <!-- Count item widget-->
-          <?php while ($investment = $user_investments->fetch_assoc()) { ?>
-            <div class="col col-xl-4 col-md-6 col-sm-12 bg-light">
-              <div class="card p-0" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-                <table class="table">
-                  <tr>
-                    <td class="display-6" colspan="2">Plan</td>
-                  </tr>
-                  <tr>
-                    <td>Amount Invested</td>
-                    <td>Tsh: <?php echo $investment['amount']; ?> </td>
-                  </tr>
-                  <tr>
-                    <td>Created</td>
-                    <td><?php echo $investment['date']; ?> </td>
-                  </tr>
-                </table>
+          <div class="col-xl-12 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row me-4 ">
+              
+              <div class="col-8 col-md-8 py-3 px-1">
+                <p class="card-text h2"> Analytics of the investment Data </p>
+                <p class="card-text mt-5"> Current progress of the investment: <?php echo $investmentData['progress_amount']; ?></p>
+                <!-- <p class="card-text"> Value: <?php echo $investmentAmount; ?></p> -->
+                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
               </div>
             </div>
-          <?php } ?>
-
-        </div>
-
-        <?php
-        $userID = $id;
-
-
-        $query = "SELECT IP.*, INV.* FROM investment_plans AS IP
-JOIN investments AS INV ON IP.id = INV.investment_plan_id
-WHERE INV.user_id = '{$userID}'";
-
-        $result = $conn->query($query);
-
-        if ($result) {
-          $investmentPlans = $result->fetch_all(MYSQLI_ASSOC);
-        } else {
-          $response = array('status' => 'error', 'message' => 'Failed to retrieve investment plans');
-          echo json_encode($response);
-          exit;
-        }
-
-        $query = "SELECT * FROM investments WHERE user_id = '{$userID}'";
-        $result = $conn->query($query);
-
-        if ($result) {
-          $investments = $result->fetch_all(MYSQLI_ASSOC);
-        } else {
-          $response = array('status' => 'error', 'message' => 'Failed to retrieve user investments');
-          echo json_encode($response);
-          exit;
-        }
-
-        $investmentProgress = array();
-
-        foreach ($investmentPlans as $plan) {
-          $planID = $plan['id'];
-          $returnPercentage = $plan['return_percentage'];
-          $periodInDays = $plan['period_in_days'];
-          $membershipFee = $plan['membership_fee'];
-          $initialInvestment = $plan['initial_investment'];
-
-          // Retrieve the user's investment data for the current plan
-          $investmentData = array_filter($investments, function ($investment) use ($planID) {
-            return $investment['investment_plan_id'] == $planID;
-          });
-
-          // Calculate investment progress and additional metrics
-          foreach ($investmentData as $investment) {
-            $investmentID = $investment['id'];
-            $investmentAmount = $investment['amount'];
-            $investmentDate = $investment['created_at'];
-
-            $progress = $initialInvestment * pow(1 + $returnPercentage, (time() - strtotime($investmentDate)) / (60 * 60 * 24 * $periodInDays));
-            $expectedAmount = $initialInvestment * (1 + $returnPercentage);
-            $completionDate = date('Y-m-d', strtotime($investmentDate . ' + ' . $periodInDays . ' days'));
-
-            // Add the investment progress and additional metrics to the array
-            $investmentProgress[$investmentID] = array(
-              'progress' => $progress,
-              'expectedAmount' => $expectedAmount,
-              'completionDate' => $completionDate
-            );
-          }
-        }
-
-        ?>
-
-        <div class="row mt-4" id="fourDAta">
-          <!-- Count item widget-->
-          <?php foreach ($investmentProgress as $investmentID => $progressData) : ?>
-            <div class="col-xl-6 col-md-12 bg-light">
-              <div class="card p-4" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-                <p class="card-text text-dark h2" style="font-weight:normal">Track progress of your Investment</p>
-                <table class="table">
-                  <tr>
-                    <td>Key</td>
-                    <td>Value</td>
-                  </tr>
-                  <tr>
-                    <td>Investment ID:</td>
-                    <td><?php echo $investmentID; ?></td>
-                  </tr>
-                  <tr>
-                    <td>Progress:</td>
-                    <td><?php echo $progressData['progress']; ?></td>
-                  </tr>
-                  <tr>
-                    <td>Expected Amount:</td>
-                    <td><?php echo $progressData['expectedAmount']; ?></td>
-                  </tr>
-                  <tr>
-                    <td>Completion Date:</td>
-                    <td><?php echo $progressData['completionDate']; ?></td>
-                  </tr>
-                </table>
-              </div>
-            </div>
-          <?php endforeach; ?>
-
-
-
+          </div>
         </div>
       </div>
+
+      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="ThirdDAta">
+        <div class="row ">
+          <!-- Count item widget-->
+          <div class="col-xl-5 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row me-4 ">
+              <div class="col-8 col-md-8 py-3 px-1">
+                <p class="card-text h2"> Track progress of your Investment </p>
+                <p class="card-text mt-5"> stay in touch </p>
+                <p class="card-text"> Days remaining: <?php echo $investmentData['days_remaining']; ?></p>
+                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-5 col-md-8 bg-light col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row me-4 ">
+              <div class="col-8 col-md-8 py-3 px-1">
+                <p class="card-text h2"> Track progress of your Investment </p>
+                <p class="card-text mt-5"> The stake worth</p>
+                <p class="card-text"> Expected amount : <?php echo $expectedAmount; ?></p>
+                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="FourthDAta">
+        <div class="row ">
+          <!-- Count item widget-->
+          <div class="col-xl-12 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row me-4 ">
+              <div class="col-8 col-md-8 py-3 px-1">
+                <p class="card-text h2"> Track progress of your Investment </p>
+                <p class="card-text mt-5"> harvest accordingly</p>
+                <p class="card-text"> Day to cash out: <?php echo $expectedAmount; ?></p>
+                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
 
 
     </section>
     <!-- Header Section-->
-    <section class="bg-white py-5">
-      <div class="container-fluid">
-        <div class="row d-flex align-items-md-stretch">
 
-          <!-- Line Chart -->
-          <div class="col-lg-12 col-md-12 col-sm-12" id="header1">
-
-
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12" id="header2">
-
-          </div>
-          <div class="col-lg-12 col-md-12 col-sm-12" id="header3">
-
-          </div>
-
-          <!-- pricing starts here -->
-          <div id="detail-window" class="m-2 col-lg-11 card-body detailed  shadow  container-fluid container">
-
-
-          </div>
 
 
 
 
           <!-- JavaScript files-->
+
+
+          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
           <script src="js/jquery.min.js"></script>
           <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
           <script src="vendor/chart.js/Chart.min.js"></script>
@@ -426,7 +536,23 @@ WHERE INV.user_id = '{$userID}'";
                 $(".green-card").eq(Math.floor(Math.random() * 6)).fadeIn();
               }, 3000);
             });
-          </script>
+            <script>
+              var PIECHART = document.getElementById("chart");
+              var target_color = generateRandomColor();
+              var myPieChart = new Chart(PIECHART, {
+                type: "doughnut",
+                data: {
+                  labels: ["percentage of progress"],
+                  datasets: [{
+                    data: [<?php echo $percentageProgress; ?>],
+                    borderWidth: [1],
+                    backgroundColor: [brandPrimary, target_color, "#FFCE56"],
+                    hoverBackgroundColor: [brandPrimary, "rgba(75,192,192,1)", "#FFCE56"],
+                  }, ],
+                },
+              });
+            </script>
+
 
 </body>
 

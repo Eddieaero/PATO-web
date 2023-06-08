@@ -32,14 +32,19 @@ if ($result->num_rows == 0) {
 // Determine the investment_plan_id based on the amount
 if ($amount == 25000) {
     $investmentPlanID = 1;
+    $investmentCat = "weekly";
 } elseif ($amount == 50000) {
     $investmentPlanID = 2;
+    $investmentCat = "monthly";
 } elseif ($amount == 70000) {
     $investmentPlanID = 3;
+    $investmentCat = "Quarterly";
 } elseif ($amount == 100000) {
     $investmentPlanID = 4;
+    $investmentCat = "Half-yearly";
 } elseif ($amount == 300000) {
     $investmentPlanID = 5;
+    $investmentCat = "yearly";
 } else {
     // Invalid amount, handle the error accordingly
     $response = array('status' => 'error', 'message' => 'Invalid amount');
