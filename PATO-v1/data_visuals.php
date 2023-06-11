@@ -103,4 +103,4 @@ foreach ($investments as $investment) {
 $conn->close();
 ?>
 
-<meta http-equiv="refresh" content="30">
+<meta http-equiv="refresh" content="5">

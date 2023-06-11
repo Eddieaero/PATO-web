@@ -96,27 +96,6 @@ include "dbconfig.php";
 // }
 
 ?>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html>
 
@@ -137,8 +116,6 @@ include "dbconfig.php";
   <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
   <!-- Custom stylesheet - for your changes-->
   <link rel="stylesheet" href="css/custom.css">
-
-
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
   <!-- style css -->
   <link rel="stylesheet" href="css/style.css">
@@ -146,8 +123,6 @@ include "dbconfig.php";
   <link rel="stylesheet" href="css/responsive.css">
   <!-- Favicon-->
   <link rel="shortcut icon" href="img/favicon.ico">
-
-
   <script>
     var brandPrimary = "#33b35a";
 
@@ -159,9 +134,6 @@ include "dbconfig.php";
       return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
     }
   </script>
-
-
-
 </head>
 
 <body>
@@ -175,7 +147,8 @@ include "dbconfig.php";
           <!-- <h2 class="h5 text-white text-uppercase mb-0">Nathan Andrews</h2>
             <p class="text-sm mb-0 text-muted">Web Developer</p> -->
         </div>
-        <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href="index.html">
+        <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center"
+          href="index.html">
           <p class="h1 m-0">P</p>
         </a>
       </div>
@@ -185,7 +158,6 @@ include "dbconfig.php";
             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
               <use xlink:href="#real-estate-1"> </use>
             </svg>Profile </a></li>
-
         <li class="sidebar-item"><a class="sidebar-link" href="track_progress.php">
             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
               <use xlink:href="#sales-up-1"> </use>
@@ -208,7 +180,8 @@ include "dbconfig.php";
         <div class="container-fluid">
           <div class="d-flex align-items-center justify-content-between w-100">
             <div class="d-flex align-items-center">
-              <a class="menu-btn d-flex align-items-center justify-content-center p-2 bg-gray-900" id="toggle-btn" href="#">
+              <a class="menu-btn d-flex align-items-center justify-content-center p-2 bg-gray-900" id="toggle-btn"
+                href="#">
                 <svg class="svg-icon svg-icon-sm svg-icon-heavy text-white">
                   <use xlink:href="#menu-1"> Dashboard </use>
                 </svg>
@@ -221,7 +194,6 @@ include "dbconfig.php";
               </a>
             </div>
             <ul class="nav-menu mb-0 list-unstyled d-flex flex-md-row align-items-md-center">
-
               <ul class="dropdown-menu dropdown-menu-end mt-sm-3 shadow-sm" aria-labelledby="notifications">
                 <li><a class="dropdown-item py-3" href="#!">
                     <div class="d-flex">
@@ -230,7 +202,8 @@ include "dbconfig.php";
                           <use xlink:href="#envelope-1"> </use>
                         </svg>
                       </div>
-                      <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">You have 6 new messages </span><small class="small text-gray-600">4 minutes ago</small></div>
+                      <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">You have 6 new
+                          messages </span><small class="small text-gray-600">4 minutes ago</small></div>
                     </div>
                   </a></li>
                 <li><a class="dropdown-item py-3" href="#!">
@@ -266,22 +239,18 @@ include "dbconfig.php";
                 <!-- <li><a class="dropdown-item all-notifications text-center" href="#!"> <strong class="text-xs text-gray-600">view all notifications  </strong></a></li> -->
               </ul>
               </li>
-
           </div>
         </div>
       </nav>
     </header>
     <!-- Counts Section -->
-
     <!--  
 
     The following section is for the first data on the dashboard
     it contain php code to fetch data from the database and display it on the dashboard
     
     check the variable names to know what they represent
-    -->
-
-    <?php
+    --> <?php
     // fetch user Id from session
     $id = $_SESSION['userID'];
     $username = $_SESSION['user_name'];
@@ -295,60 +264,60 @@ include "dbconfig.php";
 
 
     // investment details for a defined user in the system
-
+    
     $userID = $_SESSION['userID'];
 
-          // Retrieve user's investment data
-          $query = "SELECT investments.id, investments.investment_plan_id, investment_plans.return_percentage, investment_plans.period_in_days, investments.amount, investments.created_at, investments.days_remaining, investments.progress_amount, investments.perc_progress, investments.end_date 
+    // Retrieve user's investment data
+    $query = "SELECT investments.id, investments.investment_plan_id, investment_plans.return_percentage, investment_plans.period_in_days, investments.amount, investments.created_at, investments.days_remaining, investments.progress_amount, investments.perc_progress, investments.end_date 
                 FROM investments
                 INNER JOIN investment_plans ON investments.investment_plan_id = investment_plans.id
                 WHERE investments.user_id = '$userID'";
-          $result = $conn->query($query);
+    $result = $conn->query($query);
 
-          // Check if the query was successful
-          if ($result && $result->num_rows > 0) {
-          // Fetch the data and store it in an array
-          $investmentData = $result->fetch_assoc();
+    // Check if the query was successful
+    if ($result && $result->num_rows > 0) {
+      // Fetch the data and store it in an array
+      $investmentData = $result->fetch_assoc();
 
-          // Calculate investment category based on investment plan ID
-          // $investmentCategory = "";
+      // Calculate investment category based on investment plan ID
+      // $investmentCategory = "";
+    
+      if ($investmentData['investment_plan_id'] = 1) {
+        $investmentCategory = "Weekly";
+      } elseif ($investmentData['investment_plans_id'] = 2) {
+        $investmentCategory = "Monthly";
+      } elseif ($investmentData['investment_plans_id'] = 3) {
+        $investmentCategory = "Quarterly";
+      } elseif ($investmentData['investment_plans_id'] = 4) {
+        $investmentCategory = "Semi-Annually";
+      } elseif ($investmentData['investment_plans_id'] = 5) {
+        $investmentCategory = "Annually";
+      } else {
+        $investmentCategory = "Unknown";
+      }
 
-          if ($investmentData['investment_plan_id'] = 1) {
-              $investmentCategory = "Weekly";
-          } elseif ($investmentData['investment_plans_id'] = 2) {
-              $investmentCategory = "Monthly";
-          } elseif ($investmentData['investment_plans_id'] = 3) {
-              $investmentCategory = "Quarterly";
-          } elseif ($investmentData['investment_plans_id'] = 4) {
-              $investmentCategory = "Semi-Annually";
-          } elseif ($investmentData['investment_plans_id'] = 5) {
-              $investmentCategory = "Annually";
-          } else {
-              $investmentCategory = "Unknown";
-          }
-          
 
-          // Calculate expected value at the end of the investment
-          $expectedAmount = $investmentData['amount'] * (1 + $investmentData['return_percentage']);
+      // Calculate expected value at the end of the investment
+      $expectedAmount = $investmentData['amount'] * (1 + $investmentData['return_percentage']);
 
-          // Format the end date as "Day, Month Year"
-          $completionDate = date('l, F j, Y', strtotime($investmentData['end_date']));
+      // Format the end date as "Day, Month Year"
+      $completionDate = date('l, F j, Y', strtotime($investmentData['end_date']));
 
-          // Display the investment details
+      // Display the investment details
+    
+    } else {
+      // Handle the case when there are no investments for the user
+      echo "<p>No investments found.</p>";
+    }
 
-          } else {
-          // Handle the case when there are no investments for the user
-          echo "<p>No investments found.</p>";
-          }
-
-          echo "<p>Investment Category: $investmentCategory</p>";
-          echo "<p>Initial Investment: ".$investmentData['amount']."</p>";
-          echo "<p>Percentage Progress: ".$investmentData['perc_progress']."%</p>";
-          echo "<p>Progress Value: ".$investmentData['progress_amount']."</p>";
-          echo "<p>Days Remaining: ".$investmentData['days_remaining']."</p>";
-          echo "<p>Expected Value at the End: ".$expectedAmount."</p>";
-          echo "<p>Investment Completion Date: ".$completionDate."</p>";
-
+    // echo "<p>Investment Category: $investmentCategory</p>";
+    // echo "<p>Initial Investment: ".$investmentData['amount']."</p>";
+    // echo "<p>Percentage Progress: ".$investmentData['perc_progress']."%</p>";
+    // echo "<p>Progress Value: ".$investmentData['progress_amount']."</p>";
+    // echo "<p>Days Remaining: ".$investmentData['days_remaining']."</p>";
+    // echo "<p>Expected Value at the End: ".$expectedAmount."</p>";
+    // echo "<p>Investment Completion Date: ".$completionDate."</p>";
+    
 
 
 
@@ -358,202 +327,241 @@ include "dbconfig.php";
     // $sql = "SELECT amount, DATE(created_at) as date, TIME(created_at) as time FROM investments WHERE user_id = '$id'";
     // $user_investments = $conn->query($sql);
     // $investments = $user_investments->num_rows;
-
+    
     // $total_investment_sql = "SELECT SUM(amount) AS total FROM investments WHERE user_id = '$id'";
     // $result = $conn->query($total_investment_sql);
     // $total_investment = $result->fetch_assoc()['total'];
-
-    ?>
-
-
-
-
-    <section class="py-3">
-      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="firstDAta">
-        <div class="row ">
+    
+    ?> <section class="py-xl-3 py-sm-3">
+      <div class="container-fluid col-xl-12 col-lg-12 col-md-12 col-sm-10 mb-xl-3 mb-sm-3" id="firstDAta">
+        <div class="row d-sm-flex">
           <!-- Count item widget-->
-          <div class="col-xl-8 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row me-4 ">
-              <div class="col-3 py-1">
-                <!-- <img src="images\profile.jpeg" class="img-fluid rounded-start"  alt="..."> -->
-                <img src="images\track.jpg" class="p-2" style="border-radius: 20px">
+          <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 bg-light me-xl-5 me-sm-5 "
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;  ">
+            <div class="row me-xl-4 me-lg-4 " style="">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-2 py-xl-1 py-lg-1 py-md-1 py-sm-1">
+                <img src="images\track.jpg" class="p-xl-1 p-lg-1 p-md-1 p-sm-1" style="border-radius: 20px">
               </div>
-              <div class="col-8 col-md-8 py-3 px-1">
+              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8  p-xl-3 p-sm-3">
                 <p class="card-text h2"> Track progress of your Investment </p>
-                <p class="card-text mt-5"> Current Investments: <?php echo $investmentCategory ?></p>
-                <p class="card-text"> Value: <?php echo $investmentData['amount'] ?></p>
-                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
+                <div class="  ">
+                    <p class="card-text mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4 text-end fw-normal"> Current Investments <h1 class="text-capitalize fw-semibold  text-end">
+                      <?php echo $investmentCategory ?></h1>
+                    </p>
+                </div>
+                <div>
+                    <p class="card-text text-end"> Value <h1 class="text-capitalize fw-semibold text-end">
+                      <?php echo $investmentData['amount'] ?></h1></p> 
+                    
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-md-3 col-ms-3  col-sm-9" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class=" chart-container">
+          <div class="col-xl-3 col-lg-3 col-sm-3 col-ms-3 "
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class=" col-xl-7 p-xl-3 p-sm-3 chart-container">
               <div>
-                <!-- <canvas class="my-chart"></canvas> -->
+                <canvas id="my-chart">
+                <!-- <div>echo "<p>".$investmentData['perc_progress']."%</p>" </div> -->
+                </canvas>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="SecondDAta">
-        <div class="row ">
+      <div class="container-fluid col-xl-12 col-lg-12 col-md-12 col-sm-10 mb-xl-3 mb-sm-3" id="SecondDAta">
+        <div class="row d-sm-flex">
           <!-- Count item widget-->
-          <div class="col-xl-12 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row me-4 ">
-              
-              <div class="col-8 col-md-8 py-3 px-1">
-                <p class="card-text h2"> Analytics of the investment Data </p>
-                <p class="card-text mt-5"> Current progress of the investment: <?php echo $investmentData['progress_amount']; ?></p>
-                <!-- <p class="card-text"> Value: <?php echo $investmentAmount; ?></p> -->
-                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
+          <div class="col-xl-6 offset-xl-3 col-md-8 bg-light mt-xl-4 mt-sm-4 mb-xl-5 mb-sm-5 me-xl-5 me-sm-5 col-sm-8"
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row me-xl-4 me-sm-4 p-xl-2 p-sm-2 ">
+              <div class="col-xl-12 col-md-8 p-xl-4 p-sm-4 ">
+                <p class="card-text text-center h2"> Analytics of the investment Data </p>
               </div>
+            </div>
+          </div>
+          <div class="col-xl-12 col-md-8 bg-light  col-sm-8"
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="col-xl-12 col-sm-12 row  p-xl-2 p-sm-2">
+              <div class="col-xl-12 align-items-center col-md-8 p-xl-4 p-sm-4">
+                <p class="card-text h2"> Real time Data </p>
+                <div class="text-end">
+                  <p class="card-text "> Current progress of the investment:
+                  </p>
+                  <p class="card-text text-end"> <h1 class="text-capitalize fw-semibold text-end">
+                      <?php echo $investmentData['progress_amount'] ?></h1></p> 
+                </div> 
+             </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="ThirdDAta">
-        <div class="row ">
+      <div class="container-fluid col-xl-12 col-lg-12 col-md-12 col-sm-10 mb-xl-5 mb-sm-5 mt-xl-5 mt-sm-5 " id="ThirdDAta">
+        <div class="row  ms-xl-5 ms-sm-5 ">
           <!-- Count item widget-->
-          <div class="col-xl-5 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row me-4 ">
-              <div class="col-8 col-md-8 py-3 px-1">
+          <div class="col-xl-5 col-md-5 bg-light   col-sm-5"
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row  p-xl-2 p-sm-2">
+              <div class="col-xl-12 col-md-8 col-sm-8 p-xl-4 p-sm-4">
                 <p class="card-text h2"> Track progress of your Investment </p>
-                <p class="card-text mt-5"> stay in touch </p>
-                <p class="card-text"> Days remaining: <?php echo $investmentData['days_remaining']; ?></p>
-                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
+                <p class="card-text "> stay in touch </p>
+                <div class="card-text text-end"> Days remaining: 
+                <p class="card-text text-end"> <h1 class="text-capitalize fw-semibold text-end">
+                      <?php echo $investmentData['days_remaining'] ?></h1></p> 
+                </div>
               </div>
             </div>
           </div>
-          <div class="col-xl-5 col-md-8 bg-light col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row me-4 ">
-              <div class="col-8 col-md-8 py-3 px-1">
+          <div class="col-xl-5 col-md-5 bg-light offset-xl-1 col-sm-5 float-xl-end" 
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row  p-xl-2 p-sm-2">
+              <div class="col-xl-12 col-md-8 p-xl-4 p-sm-4">
                 <p class="card-text h2"> Track progress of your Investment </p>
-                <p class="card-text mt-5"> The stake worth</p>
-                <p class="card-text"> Expected amount : <?php echo $expectedAmount; ?></p>
-                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
-              </div>
+                <p class="card-text "> The stake worth</p>
+                <div class="card-text text-end"> Expected amount : <p> <h1 class="text-capitalize fw-semibold text-end">
+                      <?php echo $expectedAmount ?></h1></p> 
+                </div>
+               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="container-fluid col-xl-12 col-lg-12 mb-3" id="FourthDAta">
-        <div class="row ">
+      <div class="container-fluid col-xl-12 col-lg-12 col-md-12 col-sm-10 mb-3" id="FourthDAta">
+        <div class="row d-sm-flex">
           <!-- Count item widget-->
-          <div class="col-xl-12 col-md-8 bg-light me-5 col-sm-8" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
-            <div class="row me-4 ">
-              <div class="col-8 col-md-8 py-3 px-1">
+          <div class="col-xl-12 col-md-8 bg-light me-xl-5 me-sm-5 col-sm-12"
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            <div class="row p-xl-2 p-sm-2">
+              <div class="col-xl-12 col-sm-12 col-md-8 p-xl-4 p-sm-4">
                 <p class="card-text h2"> Track progress of your Investment </p>
-                <p class="card-text mt-5"> harvest accordingly</p>
-                <p class="card-text"> Day to cash out: <?php echo $expectedAmount; ?></p>
-                <!-- <p class="card-text"> Value: <?php echo $daysRemaining; ?></p> -->
+                <p class="card-text "> harvest accordingly</p>
+                <p class="card-text text-end"> Day to cash out: <p> <h1 class="text-capitalize fw-semibold text-end">
+                      <?php echo $completionDate ?></h1></p> </p>
               </div>
             </div>
           </div>
         </div>
       </div>
-  
-
-
     </section>
     <!-- Header Section-->
+    <!-- JavaScript files-->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/just-validate/js/just-validate.min.js"></script>
+    <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script src="vendor/overlayscrollbars/js/OverlayScrollbars.min.js"></script>
+
+    <!-- Main File-->
+    <script src="js/front.js"></script>
+    <script>
+      // ------------------------------------------------------- //
+      //   Inject SVG Sprite - 
+      //   see more here 
+      //   https://css-tricks.com/ajaxing-svg-sprite/
+      // ------------------------------------------------------ //
+      function injectSvgSprite(path) {
+
+        var ajax = new XMLHttpRequest();
+        ajax.open("GET", path, true);
+        ajax.send();
+        ajax.onload = function (e) {
+          var div = document.createElement("div");
+          div.className = 'd-none';
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+        }
+      }
+      // this is set to BootstrapTemple website as you cannot 
+      // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
+      // while using file:// protocol
+      // pls don't forget to change to your domain :)
+      injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
+    </script>
+    <!-- <script src="pricing.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+    <?php 
+      $org = $investmentData['perc_progress'];
+      $rest = 100 - $org;
+
+      $progress = array($org, $rest);
+      // $progress = json_encode($progress);
+
+
+    ?>
+    <script>
+      // const counter = {
+      //   id = 'counter',
+      //   beforeDraw(Chart, args, options){
+      //     const {ctx, chartArea: {top, right, bottom, left, width, height}} = Chart;
+      //     ctx.save();
+      //     // ctx.fillStyle = 'blue';
+      //     // ctx.fillRect(width/2, top + (height/2), 10, 10)
+
+      //     ctx.font = '60px sans-serif';
+      //     ctx.fillText('97%', width/2, top + (height/2));
+      //   }
+      // }
+      const data = {
+        // labels: [
+        //   'Red',
+        //   'Blue',
+        // ],
+        datasets: [{
+          label: 'My Progress',
+          data: [<?php echo $progress[0].",".$progress[1]; ?>],
+          backgroundColor: [
+            // 'rgb(255, 99, 132)',
+            'rgb(40, 84, 48)',
+            // 'rgb(200, 200, 200)',
+            'rgb(240, 240, 240)',
+          ],
+          hoverOffset: 4,
+          cutout: '70%',
+          // cutoutPercentage:20,
+          // width:20%
+          // height:20%
+          // outerWidth:20%
+          borderWidth: 1
+        }]
+      };
+      
 
 
 
+      const config = {
+        type: 'doughnut',
+        data: data,
+          // circumference:200
+        // Plugin: [counter]
+      };
 
+      var pieChart = new Chart(document.getElementById('my-chart'), config);
 
-          <!-- JavaScript files-->
+      //               // Add a border to the doughnut chart
+      //               chart.style.border = '1px solid black';
 
+      //             // Add a shadow to the doughnut chart
+      //             chart.style.boxShadow = '0 0 5px 0 #ccc';
 
-          <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-          <script src="js/jquery.min.js"></script>
-          <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-          <script src="vendor/chart.js/Chart.min.js"></script>
-          <script src="vendor/just-validate/js/just-validate.min.js"></script>
-          <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
-          <script src="vendor/overlayscrollbars/js/OverlayScrollbars.min.js"></script>
-          <script src="js/charts-home.js"></script>
-          <!-- Main File-->
-          <script src="js/front.js"></script>
-          <script>
-            // ------------------------------------------------------- //
-            //   Inject SVG Sprite - 
-            //   see more here 
-            //   https://css-tricks.com/ajaxing-svg-sprite/
-            // ------------------------------------------------------ //
-            function injectSvgSprite(path) {
+      //             // Add a percentage progress text to the center of the white space
+      //             var text = document.createElement('text');
+      //             text.innerHTML = data.datasets[0].data[0] + "%";
+      //             text.style.fontSize = '16px';
+      //             text.style.textAlign = 'center';
+      //             text.style.verticalAlign = 'middle';
+      //             text.style.position = 'absolute';
+      //             text.style.left = '50%';
+      //             text.style.top = '50%';
+      //             text.style.transform = 'translate(-50%, -50%)';
+      //             pieChart.appendChild(text);
 
-              var ajax = new XMLHttpRequest();
-              ajax.open("GET", path, true);
-              ajax.send();
-              ajax.onload = function(e) {
-                var div = document.createElement("div");
-                div.className = 'd-none';
-                div.innerHTML = ajax.responseText;
-                document.body.insertBefore(div, document.body.childNodes[0]);
-              }
-            }
-            // this is set to BootstrapTemple website as you cannot 
-            // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
-            // while using file:// protocol
-            // pls don't forget to change to your domain :)
-            injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg');
-          </script>
-          <script src="pricing.js"></script>
-          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-          <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
-          <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-
-
-          <script>
-            $(document).ready(function() {
-              $("#lineCahrt").click(function() {
-                $(".form-check").toggle(); // toggle visibility of all form-check elements
-                $(".form-check:hidden").slice(2).show(); // show only the first 2 hidden form-check elements
-              });
-
-              // card -playlist
-              // var cards = $(".green-card");
-              // var currentCard = 0;
-
-              // function nextCard() {
-              //   cards.removeClass("active");
-              //   cards.eq(currentCard).addClass("active");
-              //   currentCard = (currentCard + 1) % cards.length;
-              // }
-
-              // // Show first card
-              // cards.eq(currentCard).addClass("active");
-
-              // // Set interval to change card every 3 seconds
-              // 
-
-              $(".green-card").hide();
-              $(".green-card").eq(Math.floor(Math.random() * 6)).fadeIn();
-              setInterval(() => {
-                $(".green-card").hide();
-                $(".green-card").eq(Math.floor(Math.random() * 6)).fadeIn();
-              }, 3000);
-            });
-            <script>
-              var PIECHART = document.getElementById("chart");
-              var target_color = generateRandomColor();
-              var myPieChart = new Chart(PIECHART, {
-                type: "doughnut",
-                data: {
-                  labels: ["percentage of progress"],
-                  datasets: [{
-                    data: [<?php echo $percentageProgress; ?>],
-                    borderWidth: [1],
-                    backgroundColor: [brandPrimary, target_color, "#FFCE56"],
-                    hoverBackgroundColor: [brandPrimary, "rgba(75,192,192,1)", "#FFCE56"],
-                  }, ],
-                },
-              });
-            </script>
-
-
+    </script>
 </body>
 
 </html>

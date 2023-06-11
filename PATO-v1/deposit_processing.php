@@ -396,7 +396,7 @@ include "dbconfig.php";
   <!-- JavaScript files-->
   <script src="js/jquery.min.js"></script>
   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="vendor/chart.js/Chart.min.js"></script>
+
   <script src="vendor/just-validate/js/just-validate.min.js"></script>
   <script src="vendor/choices.js/public/assets/scripts/choices.min.js"></script>
   <script src="vendor/overlayscrollbars/js/OverlayScrollbars.min.js"></script>
