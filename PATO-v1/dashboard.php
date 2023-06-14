@@ -1,6 +1,5 @@
 <?php
 include "dbconfig.php";
-// session_start();
 ?>
 
 
@@ -47,15 +46,14 @@ include "dbconfig.php";
       <!-- Sidebar Header    -->
       <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
         <!-- User Info-->
-        <div class="sidenav-header-inner text-center"><img id="logo" class="dashlog" src="images/logo.png" alt="#" />
-          <!-- <h2 class="h5 text-white text-uppercase mb-0">Nathan Andrews</h2>
-            <p class="text-sm mb-0 text-muted">Web Developer</p> -->
+        <div class="sidenav-header-inner text-center">
+          <img id="logo" class="dashlog" src="images/logo.png" alt="#">
         </div>
-        <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href="index.html">
-          <p class="h1 m-0">P</p>
+
+        <a class="brand-small text-center" href="index.html">
+            <p class="h1 m-0">P</p>
         </a>
       </div>
-      <!-- Sidebar Navigation Menus<span class="text-uppercase text-center text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Tabs</span> -->
       <ul class="list-unstyled">
         <li class="sidebar-item"><a class="sidebar-link" href="dashboard.php">
             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
@@ -116,8 +114,7 @@ include "dbconfig.php";
                           <use xlink:href="#chats-1"> </use>
                         </svg>
                       </div>
-                      <!-- <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">New 2 WhatsApp messages</span><small class="small text-gray-600">4 minutes ago</small></div> -->
-                    </div>
+                     </div>
                   </a></li>
                 <li><a class="dropdown-item py-3" href="#!">
                     <div class="d-flex">
@@ -126,7 +123,6 @@ include "dbconfig.php";
                           <use xlink:href="#checked-window-1"> </use>
                         </svg>
                       </div>
-                      <!-- <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">Server Rebooted</span><small class="small text-gray-600">8 minutes ago</small></div> -->
                     </div>
                   </a></li>
                 <li><a class="dropdown-item py-3" href="#!">
@@ -136,10 +132,8 @@ include "dbconfig.php";
                           <use xlink:href="#chats-1"> </use>
                         </svg>
                       </div>
-                      <!-- <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">New 2 WhatsApp messages</span><small class="small text-gray-600">10 minutes ago</small></div> -->
                     </div>
                   </a></li>
-                <!-- <li><a class="dropdown-item all-notifications text-center" href="#!"> <strong class="text-xs text-gray-600">view all notifications  </strong></a></li> -->
               </ul>
               </li>
 
@@ -200,7 +194,7 @@ include "dbconfig.php";
             <div>
                 <h2 class=" h1 fw-normal col-lg-12 " id="invest-heading">  Choose your Investment plan 
                   <div>
-                    <button class=" right-button btn btn-primary" id='back-InvestmentModal' onclick="removeInvestmentModal()"  style=" border-radius: 5px;"> Back </button>
+                    <button class=" float-end btn btn-primary" id='back-InvestmentModal' onclick="removeInvestmentModal()"  style=" border-radius: 5px;"> Back </button>
                   </div>
                </h2>
             </div>
@@ -224,9 +218,9 @@ include "dbconfig.php";
               <div class="col-lg-12">
                 <div class="card-body">
                 <h2 class=" float-start h1  col-lg-12 " id="invest-heading"> Investment details </h2>
-                  <h3 class="card-title">Current Investment</h5>
+                  <!-- <h3 class="card-title">Current Investment</h5>
                   <p class="card-text">Type of Investment: [Type of Investment]</p>
-                  <p class="card-text">Amount Invested: [Amount Invested]</p>
+                  <p class="card-text">Amount Invested: [Amount Invested]</p> -->
                   <button class=" mt-2 btn btn-primary" id='' onclick=" window.location.href = 'track_progress.php';"  style=" border-radius: 5px;"> Show progress </button>
                 </div>
               </div>
@@ -298,19 +292,19 @@ include "dbconfig.php";
           </div>
         </div>
 
-        <div  class="ms-5 col-lg-11">
-          <div id="pay-process1" class="ms-5 card col-lg-10">
-            <div class="col-lg-5">
+        <div  class="ms-xl-5 col-lg-12 align-items-center container-fluid ">
+          <div id="pay-process1" class=" p-2 align-items-center text-center card col-lg-7 col-xl-7" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 5px;">
+            <div class="col-lg-7">
               <p>
                 Payment processing
               </p>
-              <button class="m-3 justify-content-center btn btn-primary" id='cancel-pay' onclick=" "  style=" border-radius: 5px;">cancel</button>
-              <button class="m-3 justify-content-center btn btn-primary" id='confirm-pay' onclick=" "  style=" border-radius: 5px;">confirm</button>
+              <button class="m-3 justify-content-center btn btn-primary" id='cancel-pay' onclick=" "  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 10px;">cancel</button>
+              <button class="m-3 justify-content-center btn btn-primary" id='confirm-pay' onclick=" "  style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 10px;">confirm</button>
             </div>
             
           </div>
-          <div id="pay-process2" class=" card col-lg-9">
-            <div class="col-lg-5">
+          <div id="pay-process2" class="p-3 card col-lg-9" style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 5px;">
+            <div class="col-lg-7">
             <p>
               Payment complete
             </p>
@@ -352,7 +346,6 @@ include "dbconfig.php";
                          <ul class="list-unstyled mt-3 mb-4">
                            <li>Membership fee Tshs 5000/=</li>
                          </ul>
-                         <!-- <button type="button" id="month-pack" name="investment_plan" onclick="openPlanModal" value="plan2" class=" pg-1 w-50 btn  btn-outline-primary" style="border-radius: 5px">Tshs 50,000/=</button> -->
                          <button type="button" id="week-pack" name="investment_plan" onclick="showDetailModal()" value="55000" class=" pg-1 w-50 btn  btn-outline-primary" style="border-radius: 5px">Tshs 50000/=</button>
                        </div>
                      </div>
@@ -369,7 +362,6 @@ include "dbconfig.php";
                          <ul class="list-unstyled mt-3 mb-4">
                            <li>Membership fee Tshs 7000/=</li>
                          </ul>
-                         <!-- <button type="button" id="quarter-pack" name="investment_plan" onclick="openPlanModal" value="plan3" class=" pg-1 w-50 btn  btn-outline-primary " style="border-radius: 5px">Tshs 70,000/=</button> -->
                          <button type="button" id="week-pack" name="investment_plan" onclick="showDetailModal()" value="77000" class=" pg-1 w-50 btn  btn-outline-primary " style="border-radius: 5px">Tshs 70000/=</button>
                        </div>
                      </div>
@@ -391,7 +383,6 @@ include "dbconfig.php";
                          <ul class="list-unstyled mt-3 mb-4">
                            <li>Membership fee Tshs 10,000/=</li>
                          </ul>
-                         <!-- <button type="button" id="half-year-pack" name="investment_plan" onclick="openPlanModal" value="plan4" class=" pg-1 w-50 btn btn-outline-primary " style="border-radius: 5px">Tshs 100,000/=</button> -->
                          <button type="button" id="week-pack" name="investment_plan" onclick="showDetailModal()" value="110000" class=" pg-1 w-50 btn btn-outline-primary " style="border-radius: 5px">Tshs 100000/=</button>
                        </div>
                      </div>
@@ -408,8 +399,7 @@ include "dbconfig.php";
                          <ul class="list-unstyled mt-3 mb-4">
                            <li>Membership fee Tshs 15,000/=</li>
                          </ul>
-                         <!-- <button type="button" id="year-pack" name="investment_plan" onclick="openPlanModal" value="plan5" class=" pg-1 w-50 btn btn-outline-primary" style="border-radius: 5px">Tshs 300,000/=</button> -->
-                         <button type="button" id="week-pack" name="investment_plan" onclick="showDetailModal()" value="315000" class=" pg-1 w-50 btn btn-outline-primary" style="border-radius: 5px">Tshs 300000/=</button>
+                      <button type="button" id="week-pack" name="investment_plan" onclick="showDetailModal()" value="315000" class=" pg-1 w-50 btn btn-outline-primary" style="border-radius: 5px">Tshs 300000/=</button>
                        </div>
                      </div>
                    </div>
@@ -418,14 +408,7 @@ include "dbconfig.php";
             </div>
          </div>
         </div>
-
-
         </form>
-
-
-        
-
-
     </div>
 
 
@@ -476,22 +459,6 @@ include "dbconfig.php";
         $(".form-check").toggle(); // toggle visibility of all form-check elements
         $(".form-check:hidden").slice(2).show(); // show only the first 2 hidden form-check elements
       });
-
-      // card -playlist
-      // var cards = $(".green-card");
-      // var currentCard = 0;
-
-      // function nextCard() {
-      //   cards.removeClass("active");
-      //   cards.eq(currentCard).addClass("active");
-      //   currentCard = (currentCard + 1) % cards.length;
-      // }
-
-      // // Show first card
-      // cards.eq(currentCard).addClass("active");
-
-      // // Set interval to change card every 3 seconds
-      // 
 
       $(".green-card").hide();
       $(".green-card").eq(Math.floor(Math.random() * 6)).fadeIn();

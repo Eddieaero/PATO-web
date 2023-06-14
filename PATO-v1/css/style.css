@@ -712,8 +712,8 @@ ul.social_icon li a:hover {
 }
 
 .experts .experts_box .experts_img figure img {
-     width: 300px;
-    height: 360px;
+     /* width: 300px; */
+    /* height: 360px; */
      transition: all .5s;
      border-top: #e2e2e2 solid 20px;
      border-bottom: #e2e2e2 solid 20px;

@@ -21,6 +21,8 @@
 
 
 
+
+
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -73,6 +75,9 @@
         border-radius: 5px;
 
     }
+
+
+
 
 
 
@@ -147,6 +152,8 @@
 
 
     }
+
+
 }
 
 @media (min-width: 576px) and (max-width: 767px) {
@@ -230,6 +237,8 @@
     .d_none {
         display: none;
     }
+
+
 }
 
 @media (max-width: 575px) {
@@ -374,6 +383,112 @@
         overflow-y: scroll;
         border-radius: 5px;
 
+    }
+
+    #back-InvestmentModal{
+        text-align: center;
+        /* float: none; */
+        margin-right: 5px;
+        margin-top: 5px;
+    }
+
+    #pay-process1{
+        margin-left: 18%;
+        align-items: center;
+    }
+    
+    #pay-process2{
+        margin-left: 24%;
+        align-items: center;
+    }
+
+
+
+
+    #invest-img{
+        width: 30%;
+        height: 20%;
+        text-align: center;
+        display: none;
+    }
+    #invest-log{
+        padding: 10px;
+        position: relative;
+        width: 95%;
+        text-align: center;
+ 
+
+
+    }
+
+    #chart-percentage{
+        text-align: justify;
+        /* position: relative; */
+        /* display: flex; */
+        padding: 2px;
+    }
+    #invest-chart{
+        position: relative;
+        width: 60%;
+        height: 50%;
+        margin-left: 80px;
+        margin-top: 20px;
+        align-items: center;
+    }
+
+    #my-chart{
+        margin-bottom: 5=px;
+    }
+
+
+
+    #percent-details{
+
+        display: flex;
+        text-align: end;
+        margin-left: 80px;
+        margin-top: 20px;
+        align-items: center;
+    }
+    #invest-header{
+        width: 93%;
+       
+        padding: 10px;
+        margin-left: 14px;
+        margin-top: 20px;
+        align-items: center;
+    }
+    #invest-progress{
+        padding: 10px;
+        width: 93%;
+        height: 50%;
+        margin-left: 16px;
+        margin-top: 20px;
+        align-items: center;
+    }
+    #invest-days{
+        padding: 10px;
+        width: 93%;
+        height: 50%;
+        margin-left: 16px;
+        margin-top: 20px;
+        align-items: center;
+    }
+    #invest-expected{
+        padding: 10px;
+        width: 93%;
+        height: 50%;
+        margin-left: 16px;
+        margin-top: 20px;
+        align-items: center;
+    }
+    #invest-complete{
+        padding: 10px;
+        width: 93%;
+        height: 50%;
+        margin-left: 16px;
+        margin-top: 20px;
+        align-items: center;
     }
 
 }

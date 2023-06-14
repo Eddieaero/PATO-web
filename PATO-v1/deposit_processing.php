@@ -46,14 +46,10 @@ include "dbconfig.php";
       <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
         <!-- User Info-->
         <div class="sidenav-header-inner text-center"><img id="logo" class="dashlog" src="images/logo.png" alt="#" />
-          <!-- <h2 class="h5 text-white text-uppercase mb-0">Nathan Andrews</h2>
-            <p class="text-sm mb-0 text-muted">Web Developer</p> -->
         </div>
-        <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center" href="index.html">
-          <p class="h1 m-0">P</p>
+        <p class="h1 m-0">P</p>
         </a>
       </div>
-      <!-- Sidebar Navigation Menus<span class="text-uppercase text-center text-gray-500 text-sm fw-bold letter-spacing-0 mx-lg-2 heading">Tabs</span> -->
       <ul class="list-unstyled">
       <li class="sidebar-item"><a class="sidebar-link" href="dashboard.php">
             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
@@ -114,7 +110,6 @@ include "dbconfig.php";
                           <use xlink:href="#chats-1"> </use>
                         </svg>
                       </div>
-                      <!-- <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">New 2 WhatsApp messages</span><small class="small text-gray-600">4 minutes ago</small></div> -->
                     </div>
                   </a></li>
                 <li><a class="dropdown-item py-3" href="#!">
@@ -124,7 +119,6 @@ include "dbconfig.php";
                           <use xlink:href="#checked-window-1"> </use>
                         </svg>
                       </div>
-                      <!-- <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">Server Rebooted</span><small class="small text-gray-600">8 minutes ago</small></div> -->
                     </div>
                   </a></li>
                 <li><a class="dropdown-item py-3" href="#!">
@@ -134,10 +128,8 @@ include "dbconfig.php";
                           <use xlink:href="#chats-1"> </use>
                         </svg>
                       </div>
-                      <!-- <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">New 2 WhatsApp messages</span><small class="small text-gray-600">10 minutes ago</small></div> -->
                     </div>
                   </a></li>
-                <!-- <li><a class="dropdown-item all-notifications text-center" href="#!"> <strong class="text-xs text-gray-600">view all notifications  </strong></a></li> -->
               </ul>
               </li>
 
@@ -314,7 +306,6 @@ include "dbconfig.php";
                          <ul class="list-unstyled mt-3 mb-4">
                            <li>Membership fee Tshs 5000/=</li>
                          </ul>
-                         <!-- <button type="button" id="month-pack" name="investment_plan" onclick="openPlanModal" value="plan2" class=" pg-1 w-50 btn  btn-outline-primary" style="border-radius: 5px">Tshs 50,000/=</button> -->
                          <button type="button" id="week-pack" name="investment_plan" onclick="showDetailModal()" value="plan2" class=" pg-1 w-50 btn  btn-outline-primary" style="border-radius: 5px">Tshs 50,000/=</button>
                        </div>
                      </div>
@@ -331,16 +322,12 @@ include "dbconfig.php";
                          <ul class="list-unstyled mt-3 mb-4">
                            <li>Membership fee Tshs 7000/=</li>
                          </ul>
-                         <!-- <button type="button" id="quarter-pack" name="investment_plan" onclick="openPlanModal" value="plan3" class=" pg-1 w-50 btn  btn-outline-primary " style="border-radius: 5px">Tshs 70,000/=</button> -->
                          <button type="button" id="week-pack" name="investment_plan" onclick="showDetailModal()" value="plan3" class=" pg-1 w-50 btn  btn-outline-primary " style="border-radius: 5px">Tshs 70,000/=</button>
                        </div>
                      </div>
                    </div>
                </div>
               </div>
-               
-
-
                <div class="row justify-content-center">
                <div class="col-xl-5 col-lg-5 col-md-6 col-sm-12  text-center">
                   <div class="">
@@ -380,14 +367,7 @@ include "dbconfig.php";
             </div>
          </div>
         </div>
-
-
         </form>
-
-
-        
-
-
     </div>
 
 

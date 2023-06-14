@@ -2,11 +2,6 @@
 include "dbconfig.php";
 
 
-
-
-
-// include "dbconfig.php";
-
 // if (!isset($_SESSION['userID'])) {
 //     // User is not logged in, handle the error accordingly
 //     $response = array('status' => 'error', 'message' => 'User is not logged in');
@@ -116,24 +111,12 @@ include "dbconfig.php";
   <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
   <!-- Custom stylesheet - for your changes-->
   <link rel="stylesheet" href="css/custom.css">
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-  <!-- style css -->
+
   <link rel="stylesheet" href="css/style.css">
   <!-- Responsive-->
   <link rel="stylesheet" href="css/responsive.css">
   <!-- Favicon-->
   <link rel="shortcut icon" href="img/favicon.ico">
-  <script>
-    var brandPrimary = "#33b35a";
-
-    function generateRandomColor() {
-      var r = Math.floor(Math.random() * 256);
-      var g = Math.floor(Math.random() * 256);
-      var b = Math.floor(Math.random() * 256);
-      var a = Math.random().toFixed(1);
-      return "rgba(" + r + ", " + g + ", " + b + ", " + a + ")";
-    }
-  </script>
 </head>
 
 <body>
@@ -144,9 +127,7 @@ include "dbconfig.php";
       <div class="sidebar-header d-flex align-items-center justify-content-center p-3 mb-3">
         <!-- User Info-->
         <div class="sidenav-header-inner text-center"><img id="logo" class="dashlog" src="images/logo.png" alt="#" />
-          <!-- <h2 class="h5 text-white text-uppercase mb-0">Nathan Andrews</h2>
-            <p class="text-sm mb-0 text-muted">Web Developer</p> -->
-        </div>
+      </div>
         <!-- Small Brand information, appears on minimized sidebar--><a class="brand-small text-center"
           href="index.html">
           <p class="h1 m-0">P</p>
@@ -223,7 +204,6 @@ include "dbconfig.php";
                           <use xlink:href="#checked-window-1"> </use>
                         </svg>
                       </div>
-                      <!-- <div class="ms-3"><span class="h6 d-block fw-normal mb-1 text-xs text-gray-600">Server Rebooted</span><small class="small text-gray-600">8 minutes ago</small></div> -->
                     </div>
                   </a></li>
                 <li><a class="dropdown-item py-3" href="#!">
@@ -309,29 +289,7 @@ include "dbconfig.php";
       // Handle the case when there are no investments for the user
       echo "<p>No investments found.</p>";
     }
-
-    // echo "<p>Investment Category: $investmentCategory</p>";
-    // echo "<p>Initial Investment: ".$investmentData['amount']."</p>";
-    // echo "<p>Percentage Progress: ".$investmentData['perc_progress']."%</p>";
-    // echo "<p>Progress Value: ".$investmentData['progress_amount']."</p>";
-    // echo "<p>Days Remaining: ".$investmentData['days_remaining']."</p>";
-    // echo "<p>Expected Value at the End: ".$expectedAmount."</p>";
-    // echo "<p>Investment Completion Date: ".$completionDate."</p>";
-    
-
-
-
-
-
-    // number of investments made
-    // $sql = "SELECT amount, DATE(created_at) as date, TIME(created_at) as time FROM investments WHERE user_id = '$id'";
-    // $user_investments = $conn->query($sql);
-    // $investments = $user_investments->num_rows;
-    
-    // $total_investment_sql = "SELECT SUM(amount) AS total FROM investments WHERE user_id = '$id'";
-    // $result = $conn->query($total_investment_sql);
-    // $total_investment = $result->fetch_assoc()['total'];
-    
+ 
     ?> <section class="py-xl-3 py-sm-3">
       <div class="container-fluid col-xl-12 col-lg-12 col-md-12 col-sm-10 mb-xl-3 mb-sm-3" id="firstDAta">
         <div class="row d-sm-flex">
@@ -339,10 +297,10 @@ include "dbconfig.php";
           <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8 bg-light me-xl-5 me-sm-5 "
             style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;  ">
             <div class="row me-xl-4 me-lg-4 " style="">
-              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-2 py-xl-1 py-lg-1 py-md-1 py-sm-1">
-                <img src="images\track.jpg" class="p-xl-1 p-lg-1 p-md-1 p-sm-1" style="border-radius: 20px">
+              <div class="col-xl-4 col-lg-4 col-md-4 col-sm-1 py-xl-1 py-lg-1 py-md-1 py-sm-1" id="invest-img">
+                <img src="images\track.jpg"  class="" style="border-radius: 20px">
               </div>
-              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8  p-xl-3 p-sm-3">
+              <div class="col-xl-8 col-lg-8 col-md-8 col-sm-8  p-xl-3 p-sm-3" id="invest-log">
                 <p class="card-text h2"> Track progress of your Investment </p>
                 <div class="  ">
                     <p class="card-text mt-xl-4 mt-lg-4 mt-md-4 mt-sm-4 text-end fw-normal"> Current Investments <h1 class="text-capitalize fw-semibold  text-end">
@@ -357,12 +315,15 @@ include "dbconfig.php";
               </div>
             </div>
           </div>
-          <div class="col-xl-3 col-lg-3 col-sm-3 col-ms-3 "
-            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+          <div class="col-xl-3 col-lg-3 col-sm-5  "
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" id="invest-chart">
             <div class=" col-xl-7 p-xl-3 p-sm-3 chart-container">
-              <div>
+              <div id="">
+              <p id="chart-percentage" class="text-capitalize fw-semibold text-center "> Growth Percentage</p>
+
                 <canvas id="my-chart">
                 <!-- <div>echo "<p>".$investmentData['perc_progress']."%</p>" </div> -->
+                
                 </canvas>
               </div>
             </div>
@@ -373,15 +334,15 @@ include "dbconfig.php";
         <div class="row d-sm-flex">
           <!-- Count item widget-->
           <div class="col-xl-6 offset-xl-3 col-md-8 bg-light mt-xl-4 mt-sm-4 mb-xl-5 mb-sm-5 me-xl-5 me-sm-5 col-sm-8"
-            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" id="invest-header">
             <div class="row me-xl-4 me-sm-4 p-xl-2 p-sm-2 ">
-              <div class="col-xl-12 col-md-8 p-xl-4 p-sm-4 ">
+              <div class="col-xl-12 col-md-8 p-xl-2 p-sm-4 ">
                 <p class="card-text text-center h2"> Analytics of the investment Data </p>
               </div>
             </div>
           </div>
           <div class="col-xl-12 col-md-8 bg-light  col-sm-8"
-            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" id="invest-progress">
             <div class="col-xl-12 col-sm-12 row  p-xl-2 p-sm-2">
               <div class="col-xl-12 align-items-center col-md-8 p-xl-4 p-sm-4">
                 <p class="card-text h2"> Real time Data </p>
@@ -400,7 +361,7 @@ include "dbconfig.php";
         <div class="row  ms-xl-5 ms-sm-5 ">
           <!-- Count item widget-->
           <div class="col-xl-5 col-md-5 bg-light   col-sm-5"
-            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" id="invest-days">
             <div class="row  p-xl-2 p-sm-2">
               <div class="col-xl-12 col-md-8 col-sm-8 p-xl-4 p-sm-4">
                 <p class="card-text h2"> Track progress of your Investment </p>
@@ -413,7 +374,7 @@ include "dbconfig.php";
             </div>
           </div>
           <div class="col-xl-5 col-md-5 bg-light offset-xl-1 col-sm-5 float-xl-end" 
-            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" id="invest-expected">
             <div class="row  p-xl-2 p-sm-2">
               <div class="col-xl-12 col-md-8 p-xl-4 p-sm-4">
                 <p class="card-text h2"> Track progress of your Investment </p>
@@ -430,7 +391,7 @@ include "dbconfig.php";
         <div class="row d-sm-flex">
           <!-- Count item widget-->
           <div class="col-xl-12 col-md-8 bg-light me-xl-5 me-sm-5 col-sm-12"
-            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;">
+            style="box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); border-radius: 20px;" id="invest-img">
             <div class="row p-xl-2 p-sm-2">
               <div class="col-xl-12 col-sm-12 col-md-8 p-xl-4 p-sm-4">
                 <p class="card-text h2"> Track progress of your Investment </p>
@@ -495,18 +456,7 @@ include "dbconfig.php";
 
     ?>
     <script>
-      // const counter = {
-      //   id = 'counter',
-      //   beforeDraw(Chart, args, options){
-      //     const {ctx, chartArea: {top, right, bottom, left, width, height}} = Chart;
-      //     ctx.save();
-      //     // ctx.fillStyle = 'blue';
-      //     // ctx.fillRect(width/2, top + (height/2), 10, 10)
 
-      //     ctx.font = '60px sans-serif';
-      //     ctx.fillText('97%', width/2, top + (height/2));
-      //   }
-      // }
       const data = {
         // labels: [
         //   'Red',
@@ -523,10 +473,6 @@ include "dbconfig.php";
           ],
           hoverOffset: 4,
           cutout: '70%',
-          // cutoutPercentage:20,
-          // width:20%
-          // height:20%
-          // outerWidth:20%
           borderWidth: 1
         }]
       };
@@ -542,25 +488,6 @@ include "dbconfig.php";
       };
 
       var pieChart = new Chart(document.getElementById('my-chart'), config);
-
-      //               // Add a border to the doughnut chart
-      //               chart.style.border = '1px solid black';
-
-      //             // Add a shadow to the doughnut chart
-      //             chart.style.boxShadow = '0 0 5px 0 #ccc';
-
-      //             // Add a percentage progress text to the center of the white space
-      //             var text = document.createElement('text');
-      //             text.innerHTML = data.datasets[0].data[0] + "%";
-      //             text.style.fontSize = '16px';
-      //             text.style.textAlign = 'center';
-      //             text.style.verticalAlign = 'middle';
-      //             text.style.position = 'absolute';
-      //             text.style.left = '50%';
-      //             text.style.top = '50%';
-      //             text.style.transform = 'translate(-50%, -50%)';
-      //             pieChart.appendChild(text);
-
     </script>
 </body>
 
