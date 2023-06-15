@@ -230,7 +230,8 @@ include "dbconfig.php";
     it contain php code to fetch data from the database and display it on the dashboard
     
     check the variable names to know what they represent
-    --> <?php
+    -->
+     <?php
     // fetch user Id from session
     $id = $_SESSION['userID'];
     $username = $_SESSION['user_name'];

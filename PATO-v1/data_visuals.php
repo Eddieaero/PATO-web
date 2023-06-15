@@ -53,13 +53,10 @@ foreach ($investments as $investment) {
     $returnPercentage = $investmentPlans[$investmentPlanID]['return_percentage'];
     $periodInDays = $investmentPlans[$investmentPlanID]['period_in_days'];
 
-    // Calculate investment progress and additional metrics
-    // $progress = round($investmentAmount * pow(1 + $returnPercentage, (time() - strtotime($investmentDate)) / (60 * 60 * 24 * $periodInDays)), 2);
     $currentTime = time();
     $currentDay = date('Y-m-d H:i:s');
     $currentDate = strtotime(date('Y-m-d'));
 
-    // $timeDifference = ($currentTime - $investmentTime);
     $expectedAmount = $investmentAmount * (1 + $returnPercentage);
     $completionDate = date('Y-m-d', strtotime($investmentDate . ' + ' . $periodInDays . ' days'));
     $completionDateTimestamp = strtotime($completionDate);
@@ -68,8 +65,6 @@ foreach ($investments as $investment) {
     $daysDifference = $periodInDays - $daysRemaining;
     // $percentageProgress = ($daysDifference / ($periodInDays*60*60*24)) * 100;
     $percentageProgress = ($daysDifference / ($periodInDays)) * 100;
-    // $percentageProgress = round(($daysDifference / ($periodInDays)) * 100,2);
-    // $percentageProgress = round(($timeDifference / ($periodInDays*60*60*24)) * 100, 4);
     $progress = $percentageProgress * $expectedAmount/100;
     // Update the investment record in the database
     $updateQuery = "UPDATE investments SET days_remaining = '$daysRemaining', progress_amount = '$progress', perc_progress = '$percentageProgress', end_date = '$completionDate' WHERE id = '$investmentID' AND user_id = '$userID'";
@@ -103,4 +98,4 @@ foreach ($investments as $investment) {
 $conn->close();
 ?>
 
-<meta http-equiv="refresh" content="5">
+<!-- <meta http-equiv="refresh" content="5"> -->
