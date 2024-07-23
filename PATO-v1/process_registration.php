@@ -22,11 +22,6 @@
 
 
 
-
-            
-
-
-
             // insert user data into database
             $sql = "INSERT INTO user (id, first_name, surname, dob, gender, email, phone, password, conf_password) VALUES ('$id', '$first_name', '$surname', '$dob', '$gender', '$email', '$phone', '$password', '$conf_password')";
             if (mysqli_query($conn, $sql)) {
@@ -37,10 +32,6 @@
             } else {
                 echo "Error: " . $sql . "<br>" . mysqli_error($conn);
             }
-
-
-
-
 
     }
     }

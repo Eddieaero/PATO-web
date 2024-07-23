@@ -27,19 +27,10 @@
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
-      <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
-   </head>
+    </head>
    <!-- body -->
    <body class="main-layout">
-      <!-- loader  -->
-      <!-- <div class="loader_bg">
-         <div class="loader"><img src="images/loading.gif" alt="#"/></div>
-      </div> -->
-      <!-- end loader -->
-      <!-- header -->
-      <header class="sticky-top fixed-top">
+    <header class="sticky-top fixed-top">
          <!-- header inner -->
          <div class="header ">
             <div class="container-fluid">
@@ -48,7 +39,7 @@
                      <div class="full">
                         <div class="center-desk">
                            <div class="logo">
-                              <a href="index.html"><img src="images/logo.png" alt="#" /></a>
+                              <a href="index.php"><img src="images/logo.png" alt="#" /></a>
                            </div>
                         </div>
                      </div>
@@ -61,19 +52,19 @@
                         <div class="collapse navbar-collapse" id="navbarsExample04">
                            <ul class="navbar-nav mr-auto">
                               <li class="nav-item ">
-                                 <a class="nav-link" href="index.html">Home</a>
+                                 <a class="nav-link" href="index.php">Home</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="about.html">About</a>
+                                 <a class="nav-link" href="about.php">About</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="we-do.html">Services</a>
+                                 <a class="nav-link" href="we-do.php">Services</a>
                               </li>
                               <li class="nav-item active">
-                                 <a class="nav-link" href="pricing.html">Invest</a>
+                                 <a class="nav-link" href="pricing.php">Invest</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="contact.html">Contact Us</a>
+                                 <a class="nav-link" href="contact.php">Contact Us</a>
                               </li>
                               <li class="nav-item">
                                  <a class="nav-link" href="signin.php">User</a>
@@ -111,8 +102,6 @@
       <!-- our pricing -->
       <div  class="pricing slin">
          <div class="container">
-            <!-- <div class="row"> -->
-           
                   <form method="post" action="process_login.php" class="container-fluid text-center col-xl-4 col-lg-4 col-md-6" >
                      <?php if (isset($_GET['error'])){echo "<button class='btn btn-sm text-danger'>Invalid Credentials </button>";}?>
                      <div class="mb-4  ">
@@ -135,7 +124,6 @@
                      </div>
                      </div>
                   </form>
-               <!-- </div> -->
             </div>
          </div>
       <!-- end our pricing -->
@@ -160,22 +148,11 @@
                      <h3>Team </h3>
                      <p class="variat" >We are well equipped with a team of not only educated but also motivated youth individuals who would strive at anything to ensure that goals and objectives are achieved within the planned window.</p>
                   </div>
-                  <!-- <div class="col-md-2 col-sm-6">
-                     <h3>Useful Link</h3>
-                     <ul class="link_menu">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="about.html"> About</a></li>
-                        <li><a href="we-do.html">Services</a></li>
-                        <li class="active"><a href="pricing.html">Invest</a></li>
-                        <li><a href="contact.html">Contact Us</a></li>
-                     </ul>
-                  </div> -->
-                  <div class="col-md-4 col-sm-6">
+                 <div class="col-md-4 col-sm-6">
                      <h3>Subscribe</h3>
                      <form class="bottom_form">
                         <a class="right_btn" href="Javascript:void(0)"> <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                         <input class="enter" placeholder="Enter your email" type="text" name="Enter your email">
-                        <!-- <p >There are many variations of passages </p> -->
                      </form>
                   </div>
                </div>
@@ -185,9 +162,6 @@
                   <div class="row">
                      <div class="col-md-10 offset-md-1">
                      <p>© 2023 Pato Space.
-                            <!-- Design by   -->
-                           <!-- <a href="https://html.design/"> Free Html Templates</a> -->
-                            <!-- Customised by makilagied -->
                         </p>
                      </div>
                   </div>

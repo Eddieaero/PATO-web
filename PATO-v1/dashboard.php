@@ -29,10 +29,7 @@ include "dbconfig.php";
   <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
   <!-- Custom stylesheet - for your changes-->
   <link rel="stylesheet" href="css/custom.css">
-  
-  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-      <!-- style css -->
-  <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/style.css">
       <!-- Responsive-->
   <link rel="stylesheet" href="css/responsive.css">
   <!-- Favicon-->
@@ -50,7 +47,7 @@ include "dbconfig.php";
           <img id="logo" class="dashlog" src="images/logo.png" alt="#">
         </div>
 
-        <a class="brand-small text-center" href="index.html">
+        <a class="brand-small text-center" href="index.php">
             <p class="h1 m-0">P</p>
         </a>
       </div>
@@ -60,7 +57,7 @@ include "dbconfig.php";
               <use xlink:href="#real-estate-1"> </use>
             </svg>Profile </a></li>
 
-        <li class="sidebar-item"><a class="sidebar-link" href="track_progress.php">
+        <li class="sidebar-item"><a class="sidebar-link" href="data_visuals.php">
             <svg class="svg-icon svg-icon-sm svg-icon-heavy me-2">
               <use xlink:href="#sales-up-1"> </use>
             </svg>Track Progress </a></li>
@@ -87,7 +84,7 @@ include "dbconfig.php";
                   <use xlink:href="#menu-1"> Dashboard </use>
                 </svg>
               </a> 
-              <a class="navbar-brand ms-2" href="index.html">
+              <a class="navbar-brand ms-2" href="index.php">
                 <div class="brand-text d-md-inline-block d-sm-inline-block text-uppercase letter-spacing-0">
                   <span class="text-white fw-normal text-xs"> </span>
                   <strong class="text-primary text-sm">Dashboard</strong>
@@ -136,7 +133,6 @@ include "dbconfig.php";
                   </a></li>
               </ul>
               </li>
-
           </div>
         </div>
       </nav>
@@ -175,9 +171,6 @@ include "dbconfig.php";
     <section class="bg-white py-5">
       <div class="container-fluid">
         <div class="row d-flex align-items-md-stretch">
-
-
-
           <div class="col-lg-12 col-md-12 col-sm-12" id="header1">
             <div class="card shadow-0 text-center col-lg-12 col-sm-12 d-flex container-fluid justify-content-center ">
                 <div>
@@ -217,11 +210,8 @@ include "dbconfig.php";
             <div class="row">
               <div class="col-lg-12">
                 <div class="card-body">
-                <h2 class=" float-start h1  col-lg-12 " id="invest-heading"> Investment details </h2>
-                  <!-- <h3 class="card-title">Current Investment</h5>
-                  <p class="card-text">Type of Investment: [Type of Investment]</p>
-                  <p class="card-text">Amount Invested: [Amount Invested]</p> -->
-                  <button class=" mt-2 btn btn-primary" id='' onclick=" window.location.href = 'track_progress.php';"  style=" border-radius: 5px;"> Show progress </button>
+                <h2 class=" float-start h1  col-lg-12 " id="invest-heading"> See Investment details </h2>
+                  <button class=" mt-2 btn btn-primary" id='' onclick=" window.location.href = 'data_visuals.php';"  style=" border-radius: 5px;"> Show progress </button>
                 </div>
               </div>
             </div>
@@ -452,22 +442,6 @@ include "dbconfig.php";
   <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
 
-
-  <script>
-    $(document).ready(function() {
-      $("#lineCahrt").click(function() {
-        $(".form-check").toggle(); // toggle visibility of all form-check elements
-        $(".form-check:hidden").slice(2).show(); // show only the first 2 hidden form-check elements
-      });
-
-      $(".green-card").hide();
-      $(".green-card").eq(Math.floor(Math.random() * 6)).fadeIn();
-      setInterval(() => {
-        $(".green-card").hide();
-        $(".green-card").eq(Math.floor(Math.random() * 6)).fadeIn();
-      }, 3000);
-    });
-  </script>
 
 </body>
 

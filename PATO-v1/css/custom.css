@@ -101,6 +101,11 @@
     float: right;
 }
 
+
+.box-radius{
+    border-radius: 20px;
+}
+
 .mobile-steps{
     border: #c2c0c0 solid 1px;
     border-radius: 5px;

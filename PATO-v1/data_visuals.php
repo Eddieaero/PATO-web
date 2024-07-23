@@ -89,6 +89,7 @@ foreach ($investments as $investment) {
         // echo "<p>investment date : $investmentDate</p>";
         // echo "<p>current day  : $currentDay</p>";
         //  // exit;
+        header('Location: track_progress.php');
     }
 }
 

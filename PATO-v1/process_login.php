@@ -19,22 +19,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['email'] = $user['email'];
         $_SESSION['user_name'] = $user['first_name']." ".$user['surname'];
         $_SESSION['userID'] = $user['id'];
-        // echo "<script>const userID = $userID;</script>";
-        
-        // if (!isset($_SESSION['session_start_time'])) {
-        //     $_SESSION['session_start_time'] = time(); // Store the session start time
-        // }
-        
-        // // Calculate time elapsed since session start
-        // $timeElapsed = time() - $_SESSION['session_start_time'];
-        
-        // // Convert the time elapsed to a more readable format (e.g., hours, minutes, seconds)
-        // $hours = floor($timeElapsed / 3600);
-        // $minutes = floor(($timeElapsed % 3600) / 60);
-        // $seconds = $timeElapsed % 60;
-    
-        // $_SESSION['time_elapsed'] = "$hours hours $minutes minutes $seconds seconds";
-    
 
         // Redirect to the home page
         header('Location: dashboard.php');

@@ -395,8 +395,11 @@ ul.social_icon li a:hover {
 }
 
 .bann_img {
-     padding-left: 59px;
-     padding-right: 20px;
+     /* padding-left: 59px; */
+     /* margin-left: 20px; */
+     /* padding: 20px; */
+     /* padding-right: 20px; */
+     border-radius: 20px;
 }
 
 #myCarousel .carousel-control-prev,
