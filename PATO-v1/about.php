@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -61,14 +59,9 @@
                                  <a class="nav-link" href="we-do.php">Services</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="pricing.php">Invest</a>
-                              </li>
-                              <li class="nav-item">
                                  <a class="nav-link" href="contact.php">Contact Us</a>
                               </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="signin.php">User</a>
-                              </li>
+                              
                            </ul>
                         </div>
                      </nav>

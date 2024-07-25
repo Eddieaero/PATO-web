@@ -1,6 +1,3 @@
-<?php include "dbconfig.php"; ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -62,13 +59,7 @@
                                  <a class="nav-link" href="we-do.php">Services</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="pricing.php">Invest</a>
-                              </li>
-                              <li class="nav-item">
                                  <a class="nav-link" href="contact.php">Contact Us</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="signin.php">User</a>
                               </li>
                            </ul>
                         </div>
@@ -240,63 +231,6 @@
          </div>
       </div>
       <!-- end about -->
-      <!-- our pricing -->
-      <div  class="pricing slin">
-         <div class="container">
-            <div class="row">
-               <div class="col-md-12">
-                  <div class="titlepage">
-                     <h2>Our Pricing</h2>
-                  </div>
-               </div>
-            </div>
-            <div class="row">
-               <div class="col-md-4">
-                  <div class="pricing_box">
-                     <div class="pricing_box_ti">
-                        <h3> <span>3</span>%<strong> return</strong></h3>
-                     </div>
-                     <div class="our_pricing">
-                        <span>weekly</span>
-                        <p> Tshs 3000/= for membership fee </p>
-                     </div>
-                  </div>
-                  <a class="read_more mar_top" href="signin.php">Tshs 25,000/=</a>
-               </div>
-               <div class="col-md-4">
-                  <div class="pricing_box">
-                     <div class="pricing_box_ti">
-                        <h3> <span>15</span>%<strong> return</strong></h3>
-                     </div>
-                     <div class="our_pricing">
-                        <span>monthly</span>
-                        <p> Tshs 5000/= for membership fee </p>
-                     </div>
-                  </div>
-                  <a class="read_more mar_top" href="signin.php">Tshs 50,000/=</a>
-               </div>
-               <div class="col-md-4">
-                  <div class="pricing_box">
-                     <div class="pricing_box_ti">
-                        <h3> <span>50</span>%<strong> return</strong></h3>
-                     </div>
-                     <div class="our_pricing">
-                        <span>Quarterly</span>
-                        <p> Tshs 7000/= for membership fee </p>
-                     </div>
-                  </div>
-                  <a class="read_more mar_top" href="signin.php">Tshs 70,000/=</a>
-               </div>
-
-               <div class="container mb-6 col-md-12">
-                  <div class="read_more1" >
-                     <a class="read_more1 read_more mar_top" href="pricing.php">more packs</a>
-                  </div>
-               </div>
-               
-            </div>
-         </div>
-      </div>
       <!-- end our pricing -->
       <!-- experts -->
       <div  class="experts slin2">

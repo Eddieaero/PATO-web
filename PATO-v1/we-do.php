@@ -1,5 +1,3 @@
-<?php include "dbconfig.php"; ?>
-
 <!DOCTYPE html>
 <html lang="en">
    <head>
@@ -61,13 +59,7 @@
                                  <a class="nav-link" href="we-do.php">Services</a>
                               </li>
                               <li class="nav-item">
-                                 <a class="nav-link" href="pricing.php">Invest</a>
-                              </li>
-                              <li class="nav-item">
                                  <a class="nav-link" href="contact.php">Contact Us</a>
-                              </li>
-                              <li class="nav-item">
-                                 <a class="nav-link" href="signin.php">User</a>
                               </li>
                            </ul>
                         </div>
@@ -111,7 +103,7 @@
             <div class="row">
                <div class="col-lg-10 offset-lg-1 col-md-12">
                   <div class="row">
-                     <div class="col-md-3 col-sm-6">
+                     <!-- <div class="col-md-3 col-sm-6">
                         <div class="we_box">
                            <i><img src="images/investment.png" alt="#"/></i>
                            <h3>Investment Plan</h3>
@@ -120,8 +112,8 @@
                               value chain. The return in investment (ROI) ranges from
                                3%-200% depending on the value chain. </p>
                         </div>
-                     </div>
-                     <div class="col-md-3 col-sm-6">
+                     </div> -->
+                     <div class="col-md-4 col-sm-6">
                         <div class="we_box">
                            <i><img src="images/community.png" alt="#"/></i>
                            <h3>Community</h3>
@@ -129,7 +121,7 @@
                                sector and all activities involved throughout the value chain.</p>
                         </div>
                      </div>
-                     <div class="col-md-3 col-sm-6">
+                     <div class="col-md-4 col-sm-6">
                         <div class="we_box">
                            <i><img src="images/employment.png" alt="#"/></i>
                            <h3>Employment</h3>
@@ -137,7 +129,7 @@
                            </p>
                         </div>
                      </div>
-                     <div class="col-md-3 col-sm-6">
+                     <div class="col-md-4 col-sm-6">
                         <div class="we_box">
                            <i><img src="images/consultation.png" alt="#"/></i>
                            <h3>Consultation</h3>
